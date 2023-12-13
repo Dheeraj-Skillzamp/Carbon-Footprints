@@ -1,0 +1,105 @@
+/* Add this CSS to your calculatefuel.css file */
+
+.calculatefuel {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: 1px solid greenyellow;
+}
+
+.calculatefuel h2 {
+    color: #333;
+}
+.calculatefuel h4 {
+    color: green;
+}
+.calculatefuel div {
+    margin-bottom: 20px;
+}
+
+.calculatefuel label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+    color: black;
+}
+
+.calculatefuel input {
+    width: 60%;
+    margin-left: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.calculatefuel select {
+    margin-left: 15px;
+    width: 15%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.calculatefuel button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.calculatefuel button:hover {
+    background-color: #45a049;
+}
+
+.calculatefood {
+    max-width: 600px;
+    margin: 25px auto;
+    padding: 20px;
+    border: 1px solid greenyellow;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.calculatefood input {
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.calculatefood label{
+    color: black;
+    font-weight: bold;
+}
+.calculatefood button{
+    margin-top: 10px;
+    width: 100px;
+}
+
+.calculatefood select{
+    width: 60%;
+    height: 28px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+    .calculatefuel {
+        max-width: 100%;
+    }
+    .calculatefood{
+        max-width: 100%;
+    }
+}

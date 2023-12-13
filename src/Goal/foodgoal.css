@@ -1,0 +1,105 @@
+
+.goal-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(166, 202, 166, 0.5);
+    border-radius: 10px;
+}
+
+.goal-container h2 {
+    color: green;
+    text-align: center;
+    font-size: 1.7rem;
+}
+.edit-goal{
+    background-color: blue;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-top: -35px;
+}
+.set-goall{
+    background-color: blue;
+    display: flex;
+    justify-content: flex-end;
+    /* margin-left: 51%; */
+    margin-top: 15px;
+
+}
+
+
+.edit-container{
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(166, 202, 166, 0.5);
+    border-radius: 10px;
+    
+
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #4caf50;
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    th, td {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    th, td {
+        font-size: 10px;
+    }
+}
+
+
+/* Set Goal*/
+
+.setgoal-container{
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgba(166, 202, 166, 0.5);
+    border-radius: 10px;
+    
+
+}
+
+.delete-goal {
+    display: flex;
+    justify-content: flex-end;
+    background-color: red;
+    margin-left: auto;
+    margin-top: -35px;
+}
+
+.delete-goal:hover {
+    
+    background-color: red;
+}
+
+.setgoal-container label{
+    color: black;
+}
+.setgoal-container h2{
+    color: green;
+    font-size: 2rem;
+    text-align: center;
+}
