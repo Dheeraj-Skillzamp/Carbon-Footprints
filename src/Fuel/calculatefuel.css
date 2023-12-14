@@ -4,7 +4,7 @@
     max-width: 600px;
     margin: 25px auto;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #f4f4f494;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
@@ -65,7 +65,7 @@
     margin: 25px auto;
     padding: 20px;
     border: 1px solid greenyellow;
-    background-color: #f4f4f4;
+    background-color: #f4f4f494;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 50px;

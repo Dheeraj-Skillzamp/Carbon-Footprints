@@ -11,22 +11,25 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-
+import { useEffect , useState} from 'react';
+import axios from 'axios';
 import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
 import { Link } from '@mui/material';
 
 const pages = [
   { label: 'Dashboard', link: '/dashboard' },
-  { label: 'Calculate Fuel', link: '/profile/calculate-fuel' },
+  { label: 'Calculate Fuel', link: `/profile/calculate-fuel` },
   { label: 'Get Fuel', link: '/profile/fuel-details' },
   {label:'Set Goal', link :'/profile/set-goal'},
   {label:'Monthly Fuel Details', link:'/profile/monthly-fuel'},
+  {label :'Emission Tips', link :'/admin/emission-tips'},
 ];
 const settings = [
   {label :'Goal Details', link:'/profile/goal-details'},
   {label:'Profile', link:'/profile'},
   {label:'Edit Profile', link:'/profile/edit-profile'},
   {label: 'Logout',link:'/'} ];
+
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -47,7 +50,37 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
- 
+
+  const [details, setDetails] = useState(null);
+
+const fetchUsername = async () => {
+  try {
+      const accessToken = localStorage.getItem('accessToken');
+
+      if (!accessToken) {
+                   
+          return;
+      }
+
+      const response = await axios.get("http://127.0.0.1:8000/api/user/profiles/detail/", {
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${accessToken}`,
+          },
+      });
+
+      setDetails(response.data);
+      
+
+  } catch (error) {
+      console.error('Error occurred while fetching data', error);
+     
+  }
+}
+
+ useEffect(()=>{
+fetchUsername();
+ }, [])
   return (
     <AppBar position="static" sx={{ backgroundColor: 'rgb(75 131 75)' }}>
       <Container maxWidth="xl">
@@ -150,7 +183,11 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar sx={{ backgroundColor: 'green' }} alt="" src="/static/images/avatar/2.jpg" />
+               {details ?(
+                <Avatar src={`http://127.0.0.1:8000/${details.profile_image}`}  />
+               ):(
+                <p>No Profile Image</p>
+               )} 
               </IconButton>
             </Tooltip>
             <Menu
@@ -171,6 +208,7 @@ function Navbar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  
                    <Link href={setting.link} color="inherit" underline="none" >
                   {setting.label}
                 </Link>

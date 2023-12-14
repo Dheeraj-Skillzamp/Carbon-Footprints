@@ -81,6 +81,43 @@ const Goaldetails = () => {
     //     }
     // }
 
+    //Goal Details
+
+    const yourgoal = async () => {
+        try {
+            const accessToken = localStorage.getItem("accessToken");
+
+            if (!accessToken) {
+                toast.error("Access Token is not available");
+                return;
+            }
+
+            const response = await axios.get("http://127.0.0.1:8000/api/user/emission-goal/", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            setGetgoal(response.data);
+
+            console.log('goalData',getgoal);
+            console.log("Goals", response.data);
+        } catch (error) {
+            console.log("Error occurred while getting Goaldetails", error);
+        }
+    }
+
+    useEffect(() => {
+        yourgoal();
+    }, []);
+
+
+    // setEditgoal((prevGoal) => ({
+    //     ...prevGoal,
+    //     id: getgoal?.id,
+    // }));
+
     //Edit Goal
 
     const handleChange1 = (e) => {
@@ -119,32 +156,7 @@ const Goaldetails = () => {
         }
     }
 
-    const yourgoal = async () => {
-        try {
-            const accessToken = localStorage.getItem("accessToken");
-
-            if (!accessToken) {
-                toast.error("Access Token is not available");
-                return;
-            }
-
-            const response = await axios.get("http://127.0.0.1:8000/api/user/emission-goal/", {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`,
-                },
-            });
-
-            setGetgoal(response.data);
-            console.log("Goals", response.data);
-        } catch (error) {
-            console.log("Error occurred while getting Goaldetails", error);
-        }
-    }
-
-    useEffect(() => {
-        yourgoal();
-    }, []);
+ 
 
     return (
         <>
@@ -168,9 +180,9 @@ const Goaldetails = () => {
                                 {Object.entries(getgoal).map(([key, value],index) => (
                                     
                                         <tr key={key}>
-                                            <td style={{color: key === 'total_goal'? 'red':'',fontWeight: key === 'total_goal'? 'bold':'', }}>{goalData[index]}</td>
+                                            <td style={{color: key === 'total_goal'? 'red':'',fontWeight: key === 'total_goal'? 'bold':'', display: key === 'id'? 'none':'', }}>{goalData[index]}</td>
                                           
-                                            <td style={{color: key === 'total_goal'? 'red':'',fontWeight: key === 'total_goal'? 'bold':'', }}>{value}</td>
+                                            <td style={{color: key === 'total_goal'? 'red':'',fontWeight: key === 'total_goal'? 'bold':'', display: key === 'id'? 'none':'', }}>{value}</td>
                                         </tr>
                                     )
                                 )}
@@ -237,13 +249,14 @@ const Goaldetails = () => {
                 <div className='edit-container'>
                     <h2>Edit Your Goal</h2>
                     <form onSubmit={edityourgoal}>
-                    <div>
+                    <div style={{display:'none'}}>
                             <label>ID</label>
                             <input type='number'
                             placeholder='ID'
                             name='id'
-                            value={editgoal.id}
-                            onChange={handleChange1}/>
+                            value={getgoal.id}
+                            disabled/>
+
                         </div>
 
 

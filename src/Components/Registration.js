@@ -52,11 +52,13 @@ const Registration = () => {
             setLoadingSendOTP(true);
             const response = await axios.post('http://127.0.0.1:8000/api/user/register/', data, { headers });
 
-            if (response.status === 200) {
+            if (response.status >= 200 && response.status<300) {
                 console.log("OTP Sent Successfully");
                toast.success("OTP Sent Successfully");
                 setShowOTP(true);
                 setOtpSentSuccessfully(true);
+
+
             } else if (response.status === 400) {
                 console.log("Email is already registered");
                 toast.error("Email is already registered");
@@ -92,6 +94,8 @@ const Registration = () => {
                 const newAccessToken = response.data.access_token;
                 setAccessToken(newAccessToken);
                 localStorage.setItem('accessToken', newAccessToken);
+
+                const userToken = localStorage.setItem('userRole','user')
 
                 navigate('/dashboard');
             } else {

@@ -105,7 +105,7 @@ const Login = () => {
                 const newAccessToken = response.data.access_token;
                 setAccessToken(newAccessToken);
                 localStorage.setItem('accessToken', newAccessToken);
-
+                const userToken = localStorage.setItem('userRole','user')
                 navigate('/dashboard');
             } else {
                 console.log("OTP verification failed");
@@ -164,6 +164,11 @@ const Login = () => {
                     <div className="not-user-container">
                         <Link to="/">
                             <p>Not registered? </p>
+                        </Link>
+                    </div>
+                    <div className='admin-login'>
+                        <Link to="/admin">
+                            <p>Admin Login</p>
                         </Link>
                     </div>
                 </div>
