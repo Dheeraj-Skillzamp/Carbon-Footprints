@@ -98,13 +98,17 @@ const Userprofile = () => {
 
 
     return (
-        <>
+        <div className='userprofile' >
+            <div className='profilebackground'>
+{/* <p>dfsdgdjx</p> */}
+            </div>
     <ToastContainer />
             <Navbar></Navbar>
             <div className="userProfileContainer">
 
                 {details ? (
                     <>
+                     {/* <img className="userProfileImage" src={`http://127.0.0.1:8000/${details.bg_image}`} alt='' /> */}
                         <div className='user'>
                             <h2 className="userProfileHeader">Owner: {details.owner}</h2>
                         </div>
@@ -127,7 +131,7 @@ const Userprofile = () => {
                 {streak ? (
                     <p className="userstreaks">Your Streaks: {streak.current_streak}</p>
                 ) : (
-                    <p className="loadingText">Loading streak...</p>
+                    <p className="loadingText">Add Food Details For Streak....</p>
                 )}
 
 
@@ -137,7 +141,7 @@ const Userprofile = () => {
 
             </div>
 
-        </>
+        </div>
     );
 }
 

@@ -1,3 +1,14 @@
+.profilebackground{
+
+  position: absolute;
+  background-color: silver;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: -1;
+  
+}
+
 .userProfileContainer {
   max-width: 600px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -8,7 +19,9 @@
   display: flex;
   flex-direction: column;
   margin-left: 25%;
+  background-image: none; 
 }
+
 
 
 .containerp{

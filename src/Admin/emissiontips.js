@@ -5,8 +5,9 @@ import Navbar from '../Headers&Footers/Headers';
 import './emissiontips.css';
 
 const Emissiontips = () => {
-
+    const currentDate = new Date().toISOString().split('T')[0];
     const [emissiontips, setEmissiontips] = useState({
+        entry_date: currentDate,
         tip_text: '',
     });
 

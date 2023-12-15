@@ -69,7 +69,7 @@ const Registration = () => {
             }
         } catch (error) {
             console.log('Registration Failed. Try Again', error);
-           toast.error('Registration Failed. Try Again', error);
+           toast.error('Enter Correct Email Id', error);
         } finally {
             setLoadingSendOTP(false);
         }

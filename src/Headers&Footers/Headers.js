@@ -26,6 +26,7 @@ const pages = [
 ];
 const settings = [
   {label :'Goal Details', link:'/profile/goal-details'},
+  {label:'Favourite Tips', link:'/profile/favourite-tips'},
   {label:'Profile', link:'/profile'},
   {label:'Edit Profile', link:'/profile/edit-profile'},
   {label: 'Logout',link:'/'} ];

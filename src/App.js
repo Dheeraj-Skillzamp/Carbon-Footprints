@@ -14,6 +14,7 @@ import SetGoal from './Goal/SetGoal';
 import AdminLogin from './Admin/adminLogin';
 import { useEffect, useState } from 'react';
 import Emissiontips from './Admin/emissiontips';
+import Favouritelist from './Favourite-Tips/favouritelist';
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
@@ -49,6 +50,7 @@ function App() {
         <Route path='/profile/monthly-fuel' element= {<Monthlyemission />} />
         <Route path='/profile/goal-details' element={<Goaldetails />} />
         <Route path='/profile/set-goal' element={<SetGoal />} />
+        <Route  path='/profile/favourite-tips' element={<Favouritelist />}/>
         
         {loggedin &&
         (role === "admin") && (

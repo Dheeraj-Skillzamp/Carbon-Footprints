@@ -1,4 +1,4 @@
-.dailytips-container {
+/* .dailytips-container {
     max-width: 800px;
     margin: 50px auto;
   }
@@ -6,15 +6,14 @@
   .column-container {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
+   
     gap: 1rem;
   }
   
   .card {
-    height: 400px;
+    height: 300px;
+ 
     background-color: #f4f4f494;
-    
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
     border: 1px solid greenyellow;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s;
@@ -28,24 +27,136 @@
   }
   
   .card-body {
-    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
   }
   
   .card-title {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    margin-top: 2px;
+    color: goldenrod;
   }
   
   .card-text {
-    font-size: 1.2rem;
+    font-size: 1rem;
+   
+    margin-top: 30px;
   }
   
-  .card-subtitle {
-    color: #6c757d;
-    margin-top: 5px;
-  }
-  
+ .card-subtitle{
+  color: blue;
+  font-size: 12px;
+  margin-bottom: -12px;
+ }
+ 
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 600px;
+}
+
+
+.close-button {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.modal h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+.modal p {
+  font-size: 1em;
+  line-height: 1.4;
+}
+.modal label{
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Responsive styles 
+@media (max-width: 600px) {
+  .modal {
+    width: 90%;
+    max-width: none;
+  }
+} */
+
+
+.dailytips-container {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.column-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  height: 300px;
+  background-color: #f4f4f494;
+  border: 1px solid greenyellow;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+  margin-bottom: 20px;
+  width: calc(33.33% - 15px);
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  color: goldenrod;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-top: 30px;
+}
+
+.card-subtitle {
+  color: green;
+  font-size: 15px;
+  margin-bottom: -12px;
+}
 
 /* Modal overlay */
 .modal-overlay {
@@ -83,15 +194,47 @@
   font-size: 1.5em;
   margin-bottom: 10px;
 }
+
 .modal p {
   font-size: 1em;
   line-height: 1.4;
 }
 
+.modal label {
+  display: inline-block;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
 /* Responsive styles */
+@media (max-width: 800px) {
+  .card {
+    width: calc(50% - 15px);
+    margin-left: 5px;
+    height: 200px;
+  }
+  
+  .card-text {
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 600px) {
+  .card {
+    width:90%;
+    height: 80%;
+    padding: 10px;
+    margin-left: 15px;
+  }
+
   .modal {
     width: 90%;
     max-width: none;
+  }
+
+  .card-text {
+    font-size: 0.8rem;
+    margin-top: 15px;
   }
 }

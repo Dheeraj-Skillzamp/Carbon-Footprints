@@ -15,6 +15,7 @@ const Editprofile = () => {
         dob: '',
         phone: '',
         profile_image: null,
+        bg_image:null,
     });
 
     const navigate = useNavigate();
@@ -102,6 +103,10 @@ const Editprofile = () => {
                 formData.append('profile_image', updateDetails.profile_image);
             }
 
+            if (updateDetails.bg_image !== null) {
+                formData.append('profile_image', updateDetails.bg_image);
+            }
+
 
             const response = await axios.patch(
                 `http://127.0.0.1:8000/api/user/profiles/detail/`,
@@ -120,6 +125,7 @@ const Editprofile = () => {
                 dob: '',
                 phone: '',
                 profile_image: null,
+                bg_image:null,
             }));
 
             if (response.status === 200) {
@@ -185,6 +191,12 @@ const Editprofile = () => {
                             className='form-input'
                             type='file'
                             onChange={(e) => handleChange(e, 'profile_image')}
+                        />
+                         <label className='form-label'>Background Image</label>
+                        <input
+                            className='form-input'
+                            type='file'
+                            onChange={(e) => handleChange(e, 'bg_image')}
                         />
                         <button className='submit-button' onClick={UpdateProfile}>
                             Submit
