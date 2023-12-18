@@ -80,6 +80,11 @@ const Emissiontips = () => {
             if (response.status >= 200 && response.status < 300) {
                 console.log('Emission Tips Successfully');
                 toast.success('Emission Tips Successfully');
+                setEmissiontips({
+                    entry_date: currentDate,
+                    tip_text: '',
+                });
+                dailyemissiontips();
             } else {
                 console.log('Emission Tips not Updated');
                 toast.error('Emission Tips not Updated');
@@ -114,6 +119,7 @@ const Emissiontips = () => {
                 console.log('Emission Tip Updated Successfully');
                 toast.success('Emission Tip Updated Successfully');
                 setShowEditModal(false);
+                dailyemissiontips();
                 // Perform any additional actions after successful update if needed
             } else {
                 console.log('Failed to update Emission Tip');
@@ -157,13 +163,14 @@ const Emissiontips = () => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${accessToken}`,
                 },
-                data: { id: id }, // Include the tip_id in the request body
+                data: { id: id }, 
             });
 
             if (response.status >= 200 && response.status < 300) {
                 console.log('Emission Tip Deleted Successfully');
                 toast.success('Emission Tip Deleted Successfully');
-                // Perform any additional actions after successful deletion if needed
+                dailyemissiontips();
+               
             } else {
                 console.log('Failed to delete Emission Tip');
                 toast.error('Failed to delete Emission Tip');

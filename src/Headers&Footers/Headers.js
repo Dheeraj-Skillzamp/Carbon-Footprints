@@ -183,12 +183,12 @@ fetchUsername();
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="More Options">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                {details ?(
                 <Avatar src={`http://127.0.0.1:8000/${details.profile_image}`}  />
                ):(
-                <p>No Profile Image</p>
+                <Avatar />
                )} 
               </IconButton>
             </Tooltip>
