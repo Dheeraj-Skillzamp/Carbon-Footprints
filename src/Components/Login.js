@@ -163,7 +163,7 @@ const Login = () => {
                     </div>
                     <div className="not-user-container">
                         <Link to="/">
-                            <p>Not registered? </p>
+                            <p>Not registered Yet? </p>
                         </Link>
                     </div>
                     <div className='admin-login'>

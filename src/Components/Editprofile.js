@@ -54,7 +54,8 @@ const Editprofile = () => {
 
 
   const handleChange = (e, name) => {
-    const newValue = name === 'profile_image' ? e.target.files[0] : e.target.value;
+    // const newValue = name === 'profile_image' && 'bg_image' ? e.target.files[0] : e.target.value;
+    const newValue = (name === 'profile_image' || name === 'bg_image') ? e.target.files[0] : e.target.value;
 
     if (name === 'phone' && newValue.length > 10) {
         console.error('Phone number must be 10 digits');
@@ -104,7 +105,7 @@ const Editprofile = () => {
             }
 
             if (updateDetails.bg_image !== null) {
-                formData.append('profile_image', updateDetails.bg_image);
+                formData.append('bg_image', updateDetails.bg_image);
             }
 
 

@@ -241,7 +241,7 @@ const Dashboard = () => {
       if (response.status >= 200 && response.status < 300) {
         toast('Tips Added to Favourites');
         setFav(!fav);
-      } else  if(response.status = 400){
+      } else  if(response.status === 400){
         // setFav(fav);
         toast.error('Already Added to Favourites');
       }else{
@@ -272,9 +272,9 @@ const Dashboard = () => {
                   <p className="card-subtitle">Updated Date:{tip.updated_at}</p>
                   
                   <p className="card-text">
-                    {tip.tip_text.length > 50 ? (
+                    {tip.tip_text.length > 250 ? (
                       <>
-                        {tip.tip_text.slice(0, 150)}...
+                        {tip.tip_text.slice(0, 250)}...
                         <Link
                           className="read-more-button"
                           onClick={() => handleReadMore(tip)}
@@ -297,7 +297,7 @@ const Dashboard = () => {
           <div className="modal-overlay">
             <div className="modal">
               {/* Loader while content is being fetched */}
-              {addFav === undefined && (
+              {/* {addFav === undefined && (
                 // <Loader
                 //   size={30}
                 //   color="#00bcd4"
@@ -306,12 +306,12 @@ const Dashboard = () => {
                 <DNA 
                 height='120px'
                 width='300px'/>
-              )}
+              )} */}
 
               {/* Add to Favourites button */}
               {addFav !== undefined && (
                 <>
-                  {fav ? (
+                  {/* {fav ? (
                     <FaHeart
                       value={selectedTip.id}
                       onClick={() => addtofav()}
@@ -327,11 +327,11 @@ const Dashboard = () => {
                       onClick={() => addtofav()}
                       style={{ fontSize: '1.5rem', cursor: 'pointer' }}
                     />
-                  )}
+                  )} */}
                   <label
                     value={selectedTip.id}
                     onClick={() => addtofav()}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: 'pointer', color:'red' }}
                   >
                     Add to Favourites
                   </label>

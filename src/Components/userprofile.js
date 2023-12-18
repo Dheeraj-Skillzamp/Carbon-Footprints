@@ -82,7 +82,7 @@ const Userprofile = () => {
     //                 'Authorization':`Bearer ${accessToken}`,
     //             },
     //         })
-            
+
 
     //     }catch (error){
     //         console.error('Error occurred while Deleting data', error);
@@ -100,23 +100,28 @@ const Userprofile = () => {
     return (
         <div className='userprofile' >
             <div className='profilebackground'>
-{/* <p>dfsdgdjx</p> */}
+
             </div>
-    <ToastContainer />
+            <ToastContainer />
             <Navbar></Navbar>
             <div className="userProfileContainer">
 
                 {details ? (
                     <>
-                     {/* <img className="userProfileImage" src={`http://127.0.0.1:8000/${details.bg_image}`} alt='' /> */}
-                        <div className='user'>
-                            <h2 className="userProfileHeader">Owner: {details.owner}</h2>
-                        </div>
+                        <img className="userBackImage" src={`http://127.0.0.1:8000/${details.bg_image}`} alt='' />
+                        {/* <div className='user'>
+                            
+                        </div> */}
                         <div className='containerdd'>
                             <div className='img-cont'>
                                 <img className="userProfileImage" src={`http://127.0.0.1:8000/${details.profile_image}`} alt='' />
+                                <span className='editbutton' onClick={handleEditButtonClick} style={{ fontSize: '1rem', }}><FaRegEdit fontSize={'1.5rem'} color='red'/>
+                                    {/* <button ></button> */}
+                                </span>
+
                             </div>
                             <div className='details'>
+                                <h2 className="userProfileHeader">Owner: {details.owner}</h2>
                                 <p className='userProfileDetails'>Date of Birth : {details.dob}</p>
                                 <p className="userProfileDetails">Gender: {details.gender}</p>
                                 <p className="userProfileDetails">Contact: {details.phone}</p>
@@ -131,11 +136,11 @@ const Userprofile = () => {
                 {streak ? (
                     <p className="userstreaks">Your Streaks: {streak.current_streak}</p>
                 ) : (
-                    <p className="loadingText">Add Food Details For Streak....</p>
+                    <p className="loadingText">Your Streaks: 0 (Add Food Details For Streak....)</p>
                 )}
 
 
-                <button onClick={handleEditButtonClick} style={{fontSize:'1rem'}}>Edit Profile &emsp;<FaRegEdit fontSize={'1.5rem'}/></button>
+                {/* <button onClick={handleEditButtonClick} style={{ fontSize: '1rem' }}>Edit Profile &emsp;<FaRegEdit fontSize={'1.5rem'} /></button> */}
 
                 {/* <button onClick={deleteuser}>Delete Profile</button> */}
 

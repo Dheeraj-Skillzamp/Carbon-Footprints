@@ -44,7 +44,13 @@
     background-color: #555;
 }
   
-
+.admin-login{
+  margin-left: 70%;
+  margin-top: -9%;
+}
+.resend-btn{
+  margin-left: 10px;
+}
   .form-container {
     margin-bottom: 20px;
     padding-right: 10px;

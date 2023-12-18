@@ -25,6 +25,7 @@ const pages = [
   {label :'Emission Tips', link :'/admin/emission-tips'},
 ];
 const settings = [
+  {label:'Leader Board', link:'/profile/leaderboard'},
   {label :'Goal Details', link:'/profile/goal-details'},
   {label:'Favourite Tips', link:'/profile/favourite-tips'},
   {label:'Profile', link:'/profile'},

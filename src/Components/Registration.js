@@ -169,10 +169,10 @@ const Registration = () => {
                                     name='otp'
                                     onChange={handleChange1}
                                 ></input>
-                                <button onClick={handleVerifyOTP} disabled={loadingVerifyOTP}>
+                                <button className='verify-btn' onClick={handleVerifyOTP} disabled={loadingVerifyOTP}>
                                     {loadingVerifyOTP ? 'Verifying...' : 'Verify OTP'}
                                 </button>
-                                <button onClick={handleResendOTP} disabled={loadingResendOTP}>
+                                <button className='resend-btn' onClick={handleResendOTP} disabled={loadingResendOTP}>
                                     {loadingResendOTP ? 'Resending OTP...' : 'Resend OTP'}
                                 </button>
                             </div>
@@ -183,6 +183,11 @@ const Registration = () => {
                             <p>Already registered? </p>
                             </Link>
                         </div>
+                        <div className='admin-login'>
+                        <Link to="/admin">
+                            <p>Admin Login</p>
+                        </Link>
+                    </div>
                     </div>
                 </div>
             </div>
