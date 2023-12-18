@@ -18,7 +18,7 @@ const Registration = () => {
     const [loadingVerifyOTP, setLoadingVerifyOTP] = useState(false);
     const [otpSentSuccessfully, setOtpSentSuccessfully] = useState(false);
     const [loadingSendOTP, setLoadingSendOTP] = useState(false);
-    const [loadingResendOTP, setloadingResendOTP]=useState(false);
+    const [loadingResendOTP, setloadingResendOTP] = useState(false);
     const navigate = useNavigate();
     const [accessToken, setAccessToken] = useState(localStorage.getItem('accessToken') || '');
 
@@ -52,13 +52,11 @@ const Registration = () => {
             setLoadingSendOTP(true);
             const response = await axios.post('http://127.0.0.1:8000/api/user/register/', data, { headers });
 
-            if (response.status >= 200 && response.status<300) {
+            if (response.status >= 200 && response.status < 300) {
                 console.log("OTP Sent Successfully");
-               toast.success("OTP Sent Successfully");
+                toast.success("OTP Sent Successfully");
                 setShowOTP(true);
                 setOtpSentSuccessfully(true);
-
-
             } else if (response.status === 400) {
                 console.log("Email is already registered");
                 toast.error("Email is already registered");
@@ -69,12 +67,12 @@ const Registration = () => {
             }
         } catch (error) {
             console.log('Registration Failed. Try Again', error);
-           toast.error('Enter Correct Email Id', error);
+            toast.error('Enter Correct Email Id', error);
         } finally {
             setLoadingSendOTP(false);
         }
     };
-// API for Verfiying OTP
+    // API for Verfiying OTP
 
     const handleVerifyOTP = async (e) => {
         e.preventDefault();
@@ -85,22 +83,18 @@ const Registration = () => {
                 otp: otp.otp,
             }, { headers });
 
-            // console.log('Verify OTP Response:', response.data);
-
             if (response.status === 200 && response.data.message === 'OTP verified successfully') {
                 console.log("OTP Verified");
-               toast.success("OTP Verified");
+                toast.success("OTP Verified");
 
                 const newAccessToken = response.data.access_token;
                 setAccessToken(newAccessToken);
                 localStorage.setItem('accessToken', newAccessToken);
-
-                const userToken = localStorage.setItem('userRole','user')
-
+                const userToken = localStorage.setItem('userRole', 'user')
                 navigate('/dashboard');
             } else {
                 console.log("OTP verification failed");
-               toast.error("OTP verification failed");
+                toast.error("OTP verification failed");
             }
         } catch (error) {
             console.log('OTP Verification Failed. Try Again', error);
@@ -111,7 +105,6 @@ const Registration = () => {
     };
 
     //API for Re-Send OTP
-
     const handleResendOTP = async () => {
         try {
             setloadingResendOTP(true);
@@ -136,16 +129,12 @@ const Registration = () => {
     return (
         <div>
             <ToastContainer />
-            {/* <div className='background-image'>
-                <img src='https://source.unsplash.com/random?wallpapers' alt='' />
-            </div> */}
             <div className='main-container'>
                 <div className='form-container'>
                     <div>
                         <div className='iconn'>
-                        <FcManager fontSize={'8rem'} />
+                            <FcManager fontSize={'8rem'} />
                         </div>
-                   
                         <h2>User Registration</h2>
                         <div >
                             <label>E-mail :</label>
@@ -153,8 +142,7 @@ const Registration = () => {
                                 className='in-email'
                                 placeholder='Enter your Email'
                                 name='email'
-                                onChange={handleChange}
-                            ></input>
+                                onChange={handleChange} ></input>
                             <button onClick={handleSubmit} disabled={loadingSendOTP}>
                                 {loadingSendOTP ? 'Sending OTP...' : (otpSentSuccessfully ? 'OTP Sent Successfully!' : 'Send OTP')}
                             </button>
@@ -167,8 +155,7 @@ const Registration = () => {
                                 <input
                                     placeholder='OTP'
                                     name='otp'
-                                    onChange={handleChange1}
-                                ></input>
+                                    onChange={handleChange1}  ></input>
                                 <button className='verify-btn' onClick={handleVerifyOTP} disabled={loadingVerifyOTP}>
                                     {loadingVerifyOTP ? 'Verifying...' : 'Verify OTP'}
                                 </button>
@@ -178,16 +165,15 @@ const Registration = () => {
                             </div>
                         )}
                         <div className="already-registered-container">
-                            
                             <Link to="/login">
-                            <p>Already registered? </p>
+                                <p>Already registered? </p>
                             </Link>
                         </div>
                         <div className='admin-login'>
-                        <Link to="/admin">
-                            <p>Admin Login</p>
-                        </Link>
-                    </div>
+                            <Link to="/admin">
+                                <p>Admin Login</p>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,11 +3,10 @@ import Navbar from '../Headers&Footers/Headers';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import './foodgoal.css';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Goaldetails = () => {
     const [getgoal, setGetgoal] = useState();
-
     // const [setgoal, setSetgoal] = useState({
     //     diesel_goal: '',
     //     electricity_goal: '',
@@ -17,7 +16,7 @@ const Goaldetails = () => {
     // })
 
     const [editgoal, setEditgoal] = useState({
-        id:'',
+        id: '',
         diesel_goal: '',
         electricity_goal: '',
         food_goal: '',
@@ -25,11 +24,8 @@ const Goaldetails = () => {
         total_goal: '',
     })
 
-    const goalData =['ID','Petrol','Diseal','Electricity','Food','Total Goal'];
-
-    // const [showform, setShowform] = useState(false);
+    const goalData = ['ID', 'Petrol', 'Diseal', 'Electricity', 'Food', 'Total Goal'];
     const [showform1, setShowform1] = useState(false);
-
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -41,7 +37,6 @@ const Goaldetails = () => {
     };
 
     //set goal
-
     // const handleChange = (e) => {
     //     const { name, value } = e.target;
     //     setSetgoal((prevGoal) => ({
@@ -49,9 +44,6 @@ const Goaldetails = () => {
     //         [name]: value,
     //     }));
     // };
-
-
-
     // const setyourgoal = async (e) => {
     //     e.preventDefault();
     //     try {
@@ -82,7 +74,6 @@ const Goaldetails = () => {
     // }
 
     //Goal Details
-
     const yourgoal = async () => {
         try {
             const accessToken = localStorage.getItem("accessToken");
@@ -91,17 +82,13 @@ const Goaldetails = () => {
                 toast.error("Access Token is not available");
                 return;
             }
-
             const response = await axios.get("http://127.0.0.1:8000/api/user/emission-goal/", {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${accessToken}`,
                 },
             });
-
             setGetgoal(response.data);
-
-            console.log('goalData',getgoal);
             console.log("Goals", response.data);
         } catch (error) {
             console.log("Error occurred while getting Goaldetails", error);
@@ -131,7 +118,6 @@ const Goaldetails = () => {
         e.preventDefault();
         try {
             const accessToken = localStorage.getItem('accessToken');
-
             const response = await axios.patch("http://127.0.0.1:8000/api/user/emission-goal/", editgoal, {
                 headers: {
                     'Content-Type': ' application/json',
@@ -152,12 +138,8 @@ const Goaldetails = () => {
         } catch (error) {
             console.log('Error getting details', error);
             toast.error('Error getting details', error);
-
         }
     }
-
- 
-
     return (
         <>
             <ToastContainer />
@@ -165,36 +147,33 @@ const Goaldetails = () => {
             <div>
                 <div className='goal-container'>
                     <h2>Current Goal</h2>
-                   
-            <div>
-                    {getgoal && (
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Goal</th>
-                                    <th>Value</th>
+                    <div>
+                        {getgoal && (
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Goal</th>
+                                        <th>Value</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {Object.entries(getgoal).map(([key, value],index) => (
-                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {Object.entries(getgoal).map(([key, value], index) => (
                                         <tr key={key}>
-                                            <td style={{color: key === 'total_goal'? 'red':'',fontWeight: key === 'total_goal'? 'bold':'', display: key === 'id'? 'none':'', }}>{goalData[index]}</td>
-                                          
-                                            <td style={{color: key === 'total_goal'? 'red':'',fontWeight: key === 'total_goal'? 'bold':'', display: key === 'id'? 'none':'', }}>{value}</td>
+                                            <td style={{ color: key === 'total_goal' ? 'red' : '', fontWeight: key === 'total_goal' ? 'bold' : '', display: key === 'id' ? 'none' : '', }}>{goalData[index]}</td>
+                                            <td style={{ color: key === 'total_goal' ? 'red' : '', fontWeight: key === 'total_goal' ? 'bold' : '', display: key === 'id' ? 'none' : '', }}>{value}</td>
                                         </tr>
                                     )
-                                )}
-                            </tbody>
-                        </table>
-                    )}
+                                    )}
+                                </tbody>
+                            </table>
+                        )}
                     </div>
                     <button className='set-goall' onClick={handleClick}>Set Goal</button>
-                            <button className='edit-goal' onClick={toggleForm1}>Edit Goal</button>
+                    <button className='edit-goal' onClick={toggleForm1}>Edit Goal</button>
                 </div>
             </div>
-{/* 
+            {/* 
             {showform && (
             <div>
                 <div className='setgoal-container'>
@@ -249,17 +228,14 @@ const Goaldetails = () => {
                 <div className='edit-container'>
                     <h2>Edit Your Goal</h2>
                     <form onSubmit={edityourgoal}>
-                    <div style={{display:'none'}}>
+                        <div style={{ display: 'none' }}>
                             <label>ID</label>
                             <input type='number'
-                            placeholder='ID'
-                            name='id'
-                            value={getgoal.id}
-                            disabled/>
-
+                                placeholder='ID'
+                                name='id'
+                                value={getgoal.id}
+                                disabled />
                         </div>
-
-
                         <div>
                             <label>Food</label>
                             <input type='number'
@@ -276,7 +252,6 @@ const Goaldetails = () => {
                                 value={editgoal.electricity_goal}
                                 onChange={handleChange1} />
                         </div>
-
                         <div>
                             <label>Diesel</label>
                             <input type='number'
@@ -285,7 +260,6 @@ const Goaldetails = () => {
                                 value={editgoal.diesel_goal}
                                 onChange={handleChange1} />
                         </div>
-
                         <div>
                             <label>Petrol</label>
                             <input type='number'
@@ -295,11 +269,7 @@ const Goaldetails = () => {
                                 onChange={handleChange1} />
                         </div>
                         <button type='submit'>Edit Goal</button>
-
-
-
                     </form>
-
                 </div>
             </div>
             )}

@@ -40,29 +40,29 @@ const EmissionLeaderboard = () => {
     <>
       <Navbar />
       <div>
-      <div className="container">
-        <div>
-          <h1 className="header">Leaderboard</h1>
-          <table className="leaderboard-table">
-            <thead>
-              <tr>
-                <th>Rank</th>
-                <th>Username</th>
-                <th>Total Emissions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {lead.map((user, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{user.username}</td>
-                  <td>{user.total_emissions}</td>
+        <div className="container">
+          <div>
+            <h1 className="header">Leaderboard</h1>
+            <table className="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Username</th>
+                  <th>Total Emissions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {lead.map((user, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{user.username}</td>
+                    <td>{user.total_emissions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );

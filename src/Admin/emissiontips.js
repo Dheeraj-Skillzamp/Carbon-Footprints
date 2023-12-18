@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import Navbar from '../Headers&Footers/Headers';
 import './emissiontips.css';
-
 import { Link } from 'react-router-dom';
 import { AiTwotoneCloseCircle } from 'react-icons/ai';
 
@@ -16,7 +15,7 @@ const Emissiontips = () => {
 
     const [editedTip, setEditedTip] = useState({
         entry_date: currentDate,
-        id:'',
+        id: '',
         tip_text: '',
     });
 
@@ -28,13 +27,11 @@ const Emissiontips = () => {
     const dailyemissiontips = async () => {
         try {
             const accessToken = localStorage.getItem('accessToken');
-
             if (!accessToken) {
                 console.error('Access Token not Available');
                 toast.error('Access Token not Available');
                 return;
             }
-
             const response = await axios.get('http://127.0.0.1:8000/api/admin/emission-tips/', {
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +41,6 @@ const Emissiontips = () => {
 
             if (response.status >= 200 && response.status < 300) {
                 setDailytips(response.data);
-                
                 console.log("tips", response.data);
             } else {
                 console.log('Emission Tips not Updated');
@@ -63,7 +59,6 @@ const Emissiontips = () => {
         e.preventDefault();
         try {
             const accessToken = localStorage.getItem('accessToken');
-
             if (!accessToken) {
                 console.error('Access Token not Available');
                 toast.error('Access Token not Available');
@@ -97,7 +92,6 @@ const Emissiontips = () => {
     const updateEmissionTip = async () => {
         try {
             const accessToken = localStorage.getItem('accessToken');
-
             if (!accessToken) {
                 console.error('Access Token not Available');
                 toast.error('Access Token not Available');
@@ -114,13 +108,11 @@ const Emissiontips = () => {
                     },
                 }
             );
-
             if (response.status >= 200 && response.status < 300) {
                 console.log('Emission Tip Updated Successfully');
                 toast.success('Emission Tip Updated Successfully');
                 setShowEditModal(false);
                 dailyemissiontips();
-                // Perform any additional actions after successful update if needed
             } else {
                 console.log('Failed to update Emission Tip');
                 toast.error('Failed to update Emission Tip');
@@ -151,26 +143,23 @@ const Emissiontips = () => {
     const deleteEmissiontips = async (id) => {
         try {
             const accessToken = localStorage.getItem('accessToken');
-
             if (!accessToken) {
                 console.error('Access Token not Available');
                 toast.error('Access Token not Available');
                 return;
             }
-
             const response = await axios.delete('http://127.0.0.1:8000/api/admin/emission-tips/detail/', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${accessToken}`,
                 },
-                data: { id: id }, 
+                data: { id: id },
             });
-
             if (response.status >= 200 && response.status < 300) {
                 console.log('Emission Tip Deleted Successfully');
                 toast.success('Emission Tip Deleted Successfully');
                 dailyemissiontips();
-               
+
             } else {
                 console.log('Failed to delete Emission Tip');
                 toast.error('Failed to delete Emission Tip');
@@ -201,9 +190,7 @@ const Emissiontips = () => {
 
                 <button onClick={addemissiontips}>Submit</button>
             </div>
-
             <div>
-                {/* <h2 className='emi-tip'>Emission Tips</h2> */}
                 <div className="dailytips-container mt-5">
                     <div className="column-container">
                         {dailytips.map((tip, index) => (
@@ -211,7 +198,6 @@ const Emissiontips = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">Tips</h5>
                                     <p className="card-subtitle">Updated Date: {tip.updated_at}</p>
-
                                     <p className="card-text">
                                         {tip.tip_text.length > 150 ? (
                                             <>
@@ -248,8 +234,7 @@ const Emissiontips = () => {
                             <h2>Tip Details</h2>
                             <span
                                 className="close-button"
-                                onClick={() => setShowModal(false)}
-                            >
+                                onClick={() => setShowModal(false)} >
                                 <AiTwotoneCloseCircle />
                             </span>
                             <p>{selectedTip.tip_text}</p>
@@ -261,9 +246,8 @@ const Emissiontips = () => {
                     <div className="edit-modal-overlay">
                         <div className="edit-modal">
                             <h2>Edit Tip</h2>
-                            <p
-                            name='id'
-                            value={editedTip.id}></p>
+                            <p name='id'
+                                value={editedTip.id}></p>
                             <textarea
                                 type="text"
                                 placeholder="Edit Emission Tip"
@@ -279,8 +263,7 @@ const Emissiontips = () => {
                             <button onClick={updateEmissionTip}>Save Changes</button>
                             <span
                                 className="close-button"
-                                onClick={() => setShowEditModal(false)}
-                            >
+                                onClick={() => setShowEditModal(false)} >
                                 <AiTwotoneCloseCircle />
                             </span>
                         </div>

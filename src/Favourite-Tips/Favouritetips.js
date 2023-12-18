@@ -20,9 +20,7 @@ const Favtips = () => {
         toast.error('Access Token not Available');
         return;
       }
-
-      const response = await axios.get(
-        'http://127.0.0.1:8000/api/user/create-favorite/',
+      const response = await axios.get('http://127.0.0.1:8000/api/user/create-favorite/',
         {
           headers: {
             'Content-Type': 'application/json',
@@ -69,8 +67,7 @@ const Favtips = () => {
                       {tip.tip_text.slice(0, 250)}...
                       <Link
                         className="read-more-button"
-                        onClick={() => handleReadMore(tip)}
-                      >
+                        onClick={() => handleReadMore(tip)} >
                         Read More
                       </Link>
                     </>
@@ -80,7 +77,6 @@ const Favtips = () => {
                 </p>
               </div>
             </div>
-
           ))}
         </div>
       </div>
@@ -92,8 +88,7 @@ const Favtips = () => {
             <h2 >Tip Details</h2>
             <span
               className="close-button"
-              onClick={() => setShowModal(false)}
-            >
+              onClick={() => setShowModal(false)} >
               <AiTwotoneCloseCircle />
             </span>
             <p>{selectedTip.tip_text}</p>

@@ -6,7 +6,7 @@ import './foodgoal.css';
 
 const SetGoal = () => {
     const [setgoal, setSetgoal] = useState({
-        id:'',
+        id: '',
         diesel_goal: '',
         electricity_goal: '',
         food_goal: '',
@@ -103,8 +103,7 @@ const SetGoal = () => {
                                     placeholder='Food Goal'
                                     name='food_goal'
                                     value={setgoal.food_goal}
-                                    onChange={handleChange}
-                                />
+                                    onChange={handleChange} />
                             </div>
                             <div>
                                 <label>Electricity</label>
@@ -113,8 +112,7 @@ const SetGoal = () => {
                                     placeholder='Electricity Goal'
                                     name='electricity_goal'
                                     value={setgoal.electricity_goal}
-                                    onChange={handleChange}
-                                />
+                                    onChange={handleChange} />
                             </div>
                             <div>
                                 <label>Diesel</label>
@@ -123,8 +121,7 @@ const SetGoal = () => {
                                     placeholder='Diesel Goal'
                                     name='diesel_goal'
                                     value={setgoal.diesel_goal}
-                                    onChange={handleChange}
-                                />
+                                    onChange={handleChange} />
                             </div>
                             <div>
                                 <label>Petrol</label>
@@ -133,17 +130,13 @@ const SetGoal = () => {
                                     placeholder='Petrol Goal'
                                     name='petrol_goal'
                                     value={setgoal.petrol_goal}
-                                    onChange={handleChange}
-                                />
+                                    onChange={handleChange} />
                             </div>
                             <button type='submit'>Set Goal</button>
                         </form>
                         <div>
-                            
                             <button className='delete-goal' onClick={deleteGoal}>Delete Goal</button>
-                            
                         </div>
-                     
                     </div>
                 </div>
             </div>

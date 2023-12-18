@@ -21,51 +21,46 @@ import EmissionLeaderboard from './leaderboard/EmissionLeaderboard';
 function App() {
   const [loggedin, setLoggedin] = useState(false);
   // const navigate= useNavigate();
-
   const role = localStorage.getItem('userRole');
- 
+  
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token && role) {
+      setLoggedin(true);
+    } else {
+      // navigate('/');
 
- useEffect(()=>{
-  const token =localStorage.getItem('accessToken');
-
-  if(token && role){
-    setLoggedin(true);
-  }else{
-    // navigate('/');
-
-  }
- },[])
+    }
+  }, [])
   return (
     <div>
-     
+
       <BrowserRouter>
-      <Routes>
+        <Routes>
 
-        <Route index element={ <Registration/>}/>
-        <Route path='/login' element={<Login></Login>}/>
-        <Route path='/admin' element={<AdminLogin />}/>
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/profile' element={<Userprofile/>}/>       
-        <Route path='/profile/edit-profile' element={<Editprofile />} />
-        <Route path='/profile/calculate-fuel' element={<Calculatefuel />} />
-        <Route path='/profile/fuel-details' element={<GetFuel></GetFuel>}/>
-        <Route path='/profile/monthly-fuel' element= {<Monthlyemission />} />
-        <Route path='/profile/goal-details' element={<Goaldetails />} />
-        <Route path='/profile/set-goal' element={<SetGoal />} />
-        <Route  path='/profile/favourite-tips' element={<Favtips />}/>
-        <Route path='/profile/leaderboard' element={<EmissionLeaderboard />} />
-        
-        {loggedin &&
-        (role === "admin") && (
-          <Route  path='/admin/emission-tips' element={<Emissiontips />}/>
-        )
-       
-        }
+          <Route index element={<Registration />} />
+          <Route path='/login' element={<Login></Login>} />
+          <Route path='/admin' element={<AdminLogin />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/profile' element={<Userprofile />} />
+          <Route path='/profile/edit-profile' element={<Editprofile />} />
+          <Route path='/profile/calculate-fuel' element={<Calculatefuel />} />
+          <Route path='/profile/fuel-details' element={<GetFuel></GetFuel>} />
+          <Route path='/profile/monthly-fuel' element={<Monthlyemission />} />
+          <Route path='/profile/goal-details' element={<Goaldetails />} />
+          <Route path='/profile/set-goal' element={<SetGoal />} />
+          <Route path='/profile/favourite-tips' element={<Favtips />} />
+          <Route path='/profile/leaderboard' element={<EmissionLeaderboard />} />
 
+          {loggedin &&
+            (role === "admin") && (
+              <Route path='/admin/emission-tips' element={<Emissiontips />} />
+            )
+          }
         </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
     </div>
-   
+
   );
 }
 

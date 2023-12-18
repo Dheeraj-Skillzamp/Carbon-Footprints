@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import './Login.css'; 
+import './Login.css';
 import { FcManager } from "react-icons/fc";
 
 const Login = () => {
@@ -47,8 +47,6 @@ const Login = () => {
     const handleResendOTP = async () => {
         try {
             setloadingSendOTP(true);
-
-            // Validate email input
             if (!data.email) {
                 setInputError({
                     message: 'Please enter your email',
@@ -81,8 +79,6 @@ const Login = () => {
         e.preventDefault();
         try {
             setLoadingVerifyOTP(true);
-
-            // Validate OTP input
             if (!otp.otp) {
                 setInputError({
                     message: 'Please enter the OTP',
@@ -105,7 +101,7 @@ const Login = () => {
                 const newAccessToken = response.data.access_token;
                 setAccessToken(newAccessToken);
                 localStorage.setItem('accessToken', newAccessToken);
-                const userToken = localStorage.setItem('userRole','user')
+                const userToken = localStorage.setItem('userRole', 'user')
                 navigate('/dashboard');
             } else {
                 console.log("OTP verification failed");
@@ -122,14 +118,11 @@ const Login = () => {
     return (
         <div>
             <ToastContainer />
-            {/* <div className='background-image'>
-                <img src='https://source.unsplash.com/random?wallpapers' alt='' />
-            </div> */}
             <div className='main-container'>
                 <div className='form-container'>
                     <div>
-                    <div className='iconn'>
-                        <FcManager fontSize={'8rem'} />
+                        <div className='iconn'>
+                            <FcManager fontSize={'8rem'} />
                         </div>
                         <h2>User Login</h2>
                         <div className={`form-container ${inputError.shaking ? 'shake' : ''}`}>
@@ -138,22 +131,19 @@ const Login = () => {
                                 className='in-email'
                                 placeholder='Enter your Email'
                                 name='email'
-                                onChange={handleChange}
-                            ></input>
+                                onChange={handleChange} ></input>
                             <button onClick={handleResendOTP} disabled={loadingSendOTP}>
                                 {loadingSendOTP ? 'Sending OTP...' : (otpSentSuccessfully ? 'OTP Sent Successfully!' : 'Send OTP')}
                             </button>
                             <p className="error-message" style={{ color: 'red', textAlign: 'end' }}>{inputError.message}</p>
                         </div>
-
                         {showOTP && (
                             <div className={`otp-container ${showOTP ? 'show' : 'hide'}`}>
                                 <label>Enter OTP :</label>
                                 <input
                                     placeholder='OTP'
                                     name='otp'
-                                    onChange={handleChange1}
-                                ></input>
+                                    onChange={handleChange1}></input>
                                 <button onClick={handleVerifyOTP} disabled={loadingVerifyOTP}>
                                     {loadingVerifyOTP ? 'Verifying...' : 'Verify OTP'}
                                 </button>

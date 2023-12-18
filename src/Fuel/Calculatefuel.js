@@ -22,11 +22,9 @@ const Calculatefuel = () => {
         const { name, value } = e.target;
         setFuel((prevFuel) => ({
             ...prevFuel,
-            [name]: { ...prevFuel[name], value},
+            [name]: { ...prevFuel[name], value },
         }));
     };
-    
-    
 
     const handleUnitChange = (name, unit) => {
         setFuel((prevFuel) => ({
@@ -39,9 +37,8 @@ const Calculatefuel = () => {
         e.preventDefault();
         try {
             const accessToken = localStorage.getItem('accessToken');
-         
-            const response = await axios.post(
-                'http://127.0.0.1:8000/api/user/fuel-used/',{
+            const response = await axios.post('http://127.0.0.1:8000/api/user/fuel-used/',
+                {
                     entry_date: fuel.entry_date,
                     electricity: fuel.electricity.value,
                     diesel: fuel.diesel.value,
@@ -65,7 +62,7 @@ const Calculatefuel = () => {
                 console.log(`Error: ${response.status} - ${response.statusText}`);
                 toString.error(`Error: ${response.status} - ${response.statusText}`);
             }
-            
+
         } catch (error) {
             console.log('Error getting details', error);
             toast.error('Error getting details', error);
@@ -84,8 +81,7 @@ const Calculatefuel = () => {
         e.preventDefault();
         try {
             const accessToken = localStorage.getItem('accessToken');
-            const response = await axios.post(
-                'http://127.0.0.1:8000/api/user/daily-food-choices/',
+            const response = await axios.post('http://127.0.0.1:8000/api/user/daily-food-choices/',
                 food,
                 {
                     headers: {
@@ -113,7 +109,7 @@ const Calculatefuel = () => {
 
     return (
         <>
-        <ToastContainer />
+            <ToastContainer />
             <Navbar />
             <div>
                 <div className='calculatefuel'>
@@ -125,37 +121,30 @@ const Calculatefuel = () => {
                             <h4>Current Date: {currentDate}</h4>
                             <label>Electricity</label>
                             <input
-                            type='number'
+                                type='number'
                                 placeholder='Electricity'
                                 name='electricity'
                                 value={fuel.electricity.value}
-                                onChange={handleChange}
-                            />
+                                onChange={handleChange} />
                             <select
                                 value={fuel.electricity.unit}
                                 onChange={(e) =>
-                                    handleUnitChange('electricity', e.target.value)
-                                }
-                            >
+                                    handleUnitChange('electricity', e.target.value)} >
                                 <option value='kWh'>kWh</option>
                             </select>
                         </div>
-
                         <div>
                             <label>Diesel</label>
                             <input
-                            type='number'
+                                type='number'
                                 placeholder='Diesel'
                                 name='diesel'
                                 value={fuel.diesel.value}
-                                onChange={handleChange}
-                            />
+                                onChange={handleChange} />
                             <select
                                 value={fuel.diesel.unit}
                                 onChange={(e) =>
-                                    handleUnitChange('diesel', e.target.value)
-                                }
-                            >
+                                    handleUnitChange('diesel', e.target.value)}>
                                 <option value='L'>Liters</option>
                             </select>
                         </div>
@@ -163,26 +152,21 @@ const Calculatefuel = () => {
                         <div>
                             <label>Petrol</label>
                             <input
-                            type='number'
+                                type='number'
                                 placeholder='Petrol'
                                 name='petrol'
                                 value={fuel.petrol.value}
-                                onChange={handleChange}
-                            />
+                                onChange={handleChange} />
                             <select
                                 value={fuel.petrol.unit}
                                 onChange={(e) =>
-                                    handleUnitChange('petrol', e.target.value)
-                                }
-                            >
+                                    handleUnitChange('petrol', e.target.value)}>
                                 <option value='L'>Liters</option>
                             </select>
                         </div>
-
                         <button type='submit'>Submit</button>
                     </form>
                 </div>
-
                 <div className='calculatefood'>
                     <div>
                         <h3>Enter Your food Details below :- </h3>
@@ -192,8 +176,7 @@ const Calculatefuel = () => {
                         <select
                             value={food.food_type}
                             name='food_type'
-                            onChange={handleChange1}
-                        >
+                            onChange={handleChange1} >
                             <option value='' disabled>
                                 Select Food Type
                             </option>

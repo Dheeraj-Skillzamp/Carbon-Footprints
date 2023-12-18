@@ -15,8 +15,7 @@ const Monthlyemission = () => {
         toast.error('Access Token is not Available');
         return;
       }
-      const response = await axios.get(
-        'http://127.0.0.1:8000/api/user/emission-record/',
+      const response = await axios.get('http://127.0.0.1:8000/api/user/emission-record/',
         {
           headers: {
             'Content-Type': 'application/json',
@@ -38,7 +37,6 @@ const Monthlyemission = () => {
   return (
     <>
       <Navbar />
-  
       <div className="container">
         <div className="emission-table">
           <h2 className="table-title">Current Month Emission Data</h2>
