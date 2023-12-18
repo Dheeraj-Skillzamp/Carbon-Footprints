@@ -3,7 +3,7 @@
 .profilebackground {
   position: absolute;
   background-color: silver;
-  min-height: 900px;
+  min-height: 1100px;
   width: 100%;
   top: 0;
   z-index: -1;
@@ -102,6 +102,25 @@
   border: 1px solid gold;
 }
 
+.delete-profile {
+  position: relative; /* Ensure the positioning context for absolute positioning */
+  margin-top: 300px;
+  margin-right: 10px;
+}
+
+.delete-profile:hover::before {
+  content: "Delete Profile";
+  position: absolute;
+  top: -30px; /* Adjust the distance above the button */
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  display: block;
+  margin-left: -90px;
+}
+
+
 /* Media Queries */
 
 /* Tablet */
@@ -114,7 +133,6 @@
     margin-left: 0;
   }
 }
-
 /* Mobile */
 @media only screen and (max-width: 480px) {
   .userProfileImage {

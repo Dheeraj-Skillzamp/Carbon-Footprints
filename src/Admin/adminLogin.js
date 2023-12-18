@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { FcManager } from "react-icons/fc";
+import { FcVoicemail } from "react-icons/fc";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,7 +37,7 @@ const AdminLogin = () => {
             const response = await axios.post('http://127.0.0.1:8000/api/admin/admin-login/',{
                 username : admin.username,
                 password:admin.password,
-            },{Headers});
+            },{headers});
             
             if (response.status === 200 ) {
                 console.log("Login 'successfull");
@@ -68,7 +69,8 @@ const AdminLogin = () => {
                         <div className='form-container'>
                             <div>
                                 <div className='iconn'>
-                                    <FcManager fontSize={'8rem'} />
+                                    {/* <FcManager fontSize={'8rem'} /> */}
+                                    <FcVoicemail fontSize={'8rem'} />
                                 </div>
                                 <h2>Admin Login</h2>
                                 <div>

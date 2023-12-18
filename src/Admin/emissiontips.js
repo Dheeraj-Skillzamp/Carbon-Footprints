@@ -203,7 +203,7 @@ const Emissiontips = () => {
             </div>
 
             <div>
-                <h2 className='emi-tip'>Emission Tips</h2>
+                {/* <h2 className='emi-tip'>Emission Tips</h2> */}
                 <div className="dailytips-container mt-5">
                     <div className="column-container">
                         {dailytips.map((tip, index) => (
@@ -213,9 +213,9 @@ const Emissiontips = () => {
                                     <p className="card-subtitle">Updated Date: {tip.updated_at}</p>
 
                                     <p className="card-text">
-                                        {tip.tip_text.length > 50 ? (
+                                        {tip.tip_text.length > 150 ? (
                                             <>
-                                                {tip.tip_text.slice(0, 150)}...
+                                                {tip.tip_text.slice(0, 200)}...
                                                 <Link
                                                     className="read-more-button"
                                                     onClick={() => handleReadMore(tip)}

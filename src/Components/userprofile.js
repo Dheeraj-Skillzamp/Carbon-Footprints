@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './userprofile.css';
 import { useNavigate } from 'react-router-dom';
 import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import Navbar from '../Headers&Footers/Headers';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -67,28 +68,29 @@ const Userprofile = () => {
         }
     };
 
-    // const deleteuser = async () =>{
-    //     try{
-    //         const accessToken = localStorage.getItem('accessToken');
+    const deleteuser = async () =>{
+        try{
+            const accessToken = localStorage.getItem('accessToken');
 
-    //         if (!accessToken) {
-    //             console.error('Access Token not Available');
-    //             toast.error('Access Token not Available');
-    //             return;
-    //         }
-    //         const response = await axios.delete('http://127.0.0.1:8000/api/user/profiles/detail/',{
-    //             headers : {
-    //                 'Content-Type':'application/json',
-    //                 'Authorization':`Bearer ${accessToken}`,
-    //             },
-    //         })
+            if (!accessToken) {
+                console.error('Access Token not Available');
+                toast.error('Access Token not Available');
+                return;
+            }
+            const response = await axios.delete('http://127.0.0.1:8000/api/user/profiles/detail/',{
+                headers : {
+                    'Content-Type':'application/json',
+                    'Authorization':`Bearer ${accessToken}`,
+                },
+            })
+                setDetails(null);
+                toast("Profile Details Deleted Successfull")
 
+        }catch (error){
+            console.error('Error occurred while Deleting data', error);
 
-    //     }catch (error){
-    //         console.error('Error occurred while Deleting data', error);
-
-    //     }
-    // }
+        }
+    }
 
 
     useEffect(() => {
@@ -115,9 +117,10 @@ const Userprofile = () => {
                         <div className='containerdd'>
                             <div className='img-cont'>
                                 <img className="userProfileImage" src={`http://127.0.0.1:8000/${details.profile_image}`} alt='' />
-                                <span className='editbutton' onClick={handleEditButtonClick} style={{ fontSize: '1rem', }}><FaRegEdit fontSize={'1.5rem'} color='red'/>
+                                <span className='editbutton' onClick={handleEditButtonClick} style={{ fontSize: '1rem', }}><FaRegEdit fontSize={'1.5rem'} color='red' />
                                     {/* <button ></button> */}
                                 </span>
+
 
                             </div>
                             <div className='details'>
@@ -126,6 +129,15 @@ const Userprofile = () => {
                                 <p className="userProfileDetails">Gender: {details.gender}</p>
                                 <p className="userProfileDetails">Contact: {details.phone}</p>
                                 <p className="userProfileDetails">Total Carbon Emissions: {details.total_carbon_emissions}</p>
+                                {streak ? (
+                                    <p className="userstreaks">Your Streaks: {streak.current_streak}</p>
+                                ) : (
+                                    <p className="loadingText">Your Streaks: 0 (Add Food Details For Streak....)</p>
+                                )}
+                            </div>
+                            <div className='delete-profile'>
+                                <span style={{ fontSize: '1rem' }}><MdDelete onClick={deleteuser} fontSize={'1.5rem'} color='red' /></span>
+
                             </div>
                         </div>
                     </>
@@ -133,11 +145,7 @@ const Userprofile = () => {
                     <p className="loadingText">Loading...</p>
                 )}
 
-                {streak ? (
-                    <p className="userstreaks">Your Streaks: {streak.current_streak}</p>
-                ) : (
-                    <p className="loadingText">Your Streaks: 0 (Add Food Details For Streak....)</p>
-                )}
+
 
 
                 {/* <button onClick={handleEditButtonClick} style={{ fontSize: '1rem' }}>Edit Profile &emsp;<FaRegEdit fontSize={'1.5rem'} /></button> */}
