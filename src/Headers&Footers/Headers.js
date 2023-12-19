@@ -16,18 +16,18 @@ import axios from 'axios';
 import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
 import { Link } from '@mui/material';
 
-const pages = [
-  { label: 'Dashboard', link: '/dashboard' },
-  { label: 'Calculate Fuel', link: `/profile/calculate-fuel` },
-  { label: 'Get Fuel', link: '/profile/fuel-details' },
-  {label:'Set Goal', link :'/profile/set-goal'},
-  {label:'Monthly Fuel Details', link:'/profile/monthly-fuel'},
-  {label :'Emission Tips', link :'/admin/emission-tips'},
-];
+// const pages = [
+//   { label: 'Dashboard', link: '/dashboard' },
+//   { label: 'Calculate Fuel', link: `/profile/calculate-fuel` },
+//   { label: 'Get Fuel', link: '/profile/fuel-details' },
+//   {label:'Set Goal', link :'/profile/set-goal'},
+//   {label:'Monthly Fuel Details', link:'/profile/monthly-fuel'},
+//   {label :'Emission Tips', link :'/admin/emission-tips'},
+// ];
 const settings = [
-  {label:'Leader Board', link:'/profile/leaderboard'},
-  {label :'Goal Details', link:'/profile/goal-details'},
-  {label:'Favourite Tips', link:'/profile/favourite-tips'},
+  // {label:'Leader Board', link:'/profile/leaderboard'},
+  // {label :'Goal Details', link:'/profile/goal-details'},
+  // {label:'Favourite Tips', link:'/profile/favourite-tips'},
   {label:'Profile', link:'/profile'},
   {label:'Edit Profile', link:'/profile/edit-profile'},
   {label: 'Logout',link:'/'} ];
@@ -137,13 +137,13 @@ fetchUsername();
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
+              {/* {pages.map((page) => (
                 <MenuItem key={page.label} onClick={handleCloseNavMenu}>
                   <Link href={page.link} color="inherit" underline="none">
                   {page.label}
                   </Link>
                 </MenuItem>
-              ))}
+              ))} */}
             </Menu>
           </Box>
           <EmojiNatureIcon
@@ -168,7 +168,7 @@ fetchUsername();
             Carbon FootPrints
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {/* {pages.map((page) => (
                 <Link href={page.link} color="inherit" underline="none">
 
               <Button
@@ -179,7 +179,7 @@ fetchUsername();
                   {page.label}
               </Button>
                 </Link>
-            ))}
+            ))} */}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

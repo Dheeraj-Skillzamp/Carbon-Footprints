@@ -100,11 +100,13 @@ const Userprofile = () => {
 
 
     return (
+        <>
+        <ToastContainer />
+            <Navbar />
         <div className='userprofile' >
             <div className='profilebackground'>
             </div>
-            <ToastContainer />
-            <Navbar></Navbar>
+            
             <div className="userProfileContainer">
 
                 {details ? (
@@ -139,6 +141,7 @@ const Userprofile = () => {
                 )}
             </div>
         </div>
+        </>
     );
 }
 

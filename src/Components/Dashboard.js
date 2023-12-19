@@ -90,8 +90,9 @@ const Dashboard = () => {
   return (
     <>
       <ToastContainer />
+      <Navbar />
       <div>
-        <Navbar />
+      
         <div className="dailytips-container mt-5">
           <div className="column-container">
             {dailytips.map((tip, index) => (
