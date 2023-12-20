@@ -4,8 +4,12 @@ import { FaBars } from 'react-icons/fa';
 import SidebarMenu from './SidebarMenu';
 import { NavLink } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
-
-
+import { FcPositiveDynamic } from "react-icons/fc";
+import { FcManager } from "react-icons/fc";
+import { FcDocument } from "react-icons/fc";
+import { FaBahai } from "react-icons/fa";
+import { GoGoal } from "react-icons/go";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const routes = [
     {
@@ -16,7 +20,7 @@ const routes = [
     {
         // path: "/profile/calculate-fuel",
         name: "Fuel",
-        // icon:<AiFillHome />,
+        icon:<FaBahai  />,
         subRoutes: [
             {
                 path: "/profile/calculate-fuel",
@@ -38,7 +42,7 @@ const routes = [
     {
         // path: "/profile/set-goal",
         name: "Goals",
-        // icon:<AiFillHome />,
+        icon:<GoGoal />,
         subRoutes: [
             {
                 path: "/profile/goal-details",
@@ -53,17 +57,19 @@ const routes = [
     {
         // path: "/profile/leaderboard",
         name: "LeaderBoard",
+        icon:<FcPositiveDynamic />,
         subRoutes: [
             {
                 path: "/profile/leaderboard",
                 name: "LeaderBoard",
+                
             }
         ]
     },
     {
         path: "/profile",
         name: "Profile",
-        // icon:<AiFillHome />,
+        icon:<FcManager />,
         subRoutes: [
             {
                 path: "/profile",
@@ -82,11 +88,14 @@ const routes = [
     },
     {
         path: "/admin/emission-tips",
-        name: "Emission Tips"
+        name: "Emission Tips",
+        icon:<FcDocument/>
+        
     },
     {
         path: "/",
-        name: "Log Out"
+        name: "Log Out",
+        icon:<RiLogoutCircleRLine />
     }
 
 ];
@@ -178,7 +187,7 @@ const Sidebar = ({ children }) => {
                                 );
                             } else {
                                 return (
-                                    <NavLink
+                                    <NavLink style={{textDecoration:'none'}}
                                         to={route.path}
                                         key={index}
                                         className="link"

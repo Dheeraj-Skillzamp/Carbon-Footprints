@@ -11,13 +11,21 @@
 
 .userProfileContainer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-left: 90px;
+  margin-left: 50px;
   display: flex;
   flex-direction: column;
   max-width: 1100px;
   z-index: -1;
 }
 
+.userProfileDetails{
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.userProfileDetails span{
+  font-weight: normal;
+}
 .containerp {
   padding: 25px;
   display: flex;
@@ -36,6 +44,8 @@
 
 .details {
   display: flex;
+  margin-top: 20px;
+  margin-left: -50px;
   flex-direction: column;
   flex-grow: 1;
   color: black;
@@ -85,11 +95,11 @@
 }
 
 .userProfileHeader {
-  color: white;
+  color: black;
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
-  margin-left: -70%;
+  margin-left: -90%;
 }
 
 .userProfileImage {

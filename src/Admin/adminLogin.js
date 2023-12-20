@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FcManager } from "react-icons/fc";
 import { FcVoicemail } from "react-icons/fc";
 import axios from 'axios';
+import './adminlog.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
@@ -61,14 +62,14 @@ const AdminLogin = () => {
         <>
             <ToastContainer />
             <div>
-                <div className='main-container'>
-                    <div className='form-container'>
+                <div className='admin-container'>
+                    <div className='admin-form-container'>
                         <div>
-                            <div className='iconn'>
+                            <div className='iconn-admin'>
                                 {/* <FcManager fontSize={'8rem'} /> */}
                                 <FcVoicemail fontSize={'8rem'} />
                             </div>
-                            <h2>Admin Login</h2>
+                            <h2>ADMIN</h2>
                             <div>
                                 <label>Username :</label>
                                 <input

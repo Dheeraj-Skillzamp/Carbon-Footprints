@@ -129,7 +129,7 @@ const Registration = () => {
     return (
         <div>
             <ToastContainer />
-            <div className='main-container'>
+            <div className='mainn-container'>
                 <div className='form-container'>
                     <div>
                         <div className='iconn'>
@@ -168,12 +168,15 @@ const Registration = () => {
                             <Link to="/login">
                                 <p>Already registered? </p>
                             </Link>
-                        </div>
-                        <div className='admin-login'>
                             <Link to="/admin">
                                 <p>Admin Login</p>
                             </Link>
                         </div>
+                        {/* <div className='admin-login'>
+                            <Link to="/admin">
+                                <p>Admin Login</p>
+                            </Link>
+                        </div> */}
                     </div>
                 </div>
             </div>

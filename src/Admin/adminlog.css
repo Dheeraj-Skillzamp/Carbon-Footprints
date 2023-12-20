@@ -1,0 +1,29 @@
+.admin-container{
+    background-color: whitesmoke;
+  background-image: none;
+  opacity: 0.9;
+  max-width: 400px;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.admin-form-container{
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+.admin-form-container h2 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: green;
+  }
+  .admin-form-container label{
+    color: black;
+  }
+
+.iconn-admin{
+    display: flex;
+    justify-content: center;
+}

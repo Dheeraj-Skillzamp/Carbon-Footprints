@@ -118,14 +118,14 @@ const Login = () => {
     return (
         <div>
             <ToastContainer />
-            <div className='main-container'>
-                <div className='form-container'>
+            <div className='mainn-container'>
+                <div className='form-containerr'>
                     <div>
-                        <div className='iconn'>
+                        <div className='iconnn'>
                             <FcManager fontSize={'8rem'} />
                         </div>
                         <h2>User Login</h2>
-                        <div className={`form-container ${inputError.shaking ? 'shake' : ''}`}>
+                        <div className={` ${inputError.shaking ? 'shake' : ''}`}>
                             <label>E-mail :</label>
                             <input
                                 className='in-email'
@@ -155,12 +155,11 @@ const Login = () => {
                         <Link to="/">
                             <p>Not registered Yet? </p>
                         </Link>
-                    </div>
-                    <div className='admin-login'>
                         <Link to="/admin">
                             <p>Admin Login</p>
                         </Link>
                     </div>
+                    
                 </div>
             </div>
         </div>

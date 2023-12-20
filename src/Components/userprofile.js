@@ -104,8 +104,8 @@ const Userprofile = () => {
         <ToastContainer />
             <Navbar />
         <div className='userprofile' >
-            <div className='profilebackground'>
-            </div>
+            {/* <div className='profilebackground'>
+            </div> */}
             
             <div className="userProfileContainer">
 
@@ -119,11 +119,11 @@ const Userprofile = () => {
                                 </span>
                             </div>
                             <div className='details'>
-                                <h2 className="userProfileHeader">Owner: {details.owner}</h2>
-                                <p className='userProfileDetails'>Date of Birth : {details.dob}</p>
-                                <p className="userProfileDetails">Gender: {details.gender}</p>
-                                <p className="userProfileDetails">Contact: {details.phone}</p>
-                                <p className="userProfileDetails">Total Carbon Emissions: {details.total_carbon_emissions}</p>
+                                <h2 className="userProfileHeader">{details.owner}</h2>
+                                <p className='userProfileDetails'>Date of Birth : <span>{details.dob}</span></p><br></br>
+                                <p className="userProfileDetails">Gender: <span>{details.gender}</span></p><br></br>
+                                <p className="userProfileDetails">Contact: <span>{details.phone}</span></p><br></br>
+                                <p className="userProfileDetails">Total Carbon Emissions: <span>{details.total_carbon_emissions}</span></p><br></br>
                                 {streak ? (
                                     <p className="userstreaks">Your Streaks: {streak.current_streak}</p>
                                 ) : (
