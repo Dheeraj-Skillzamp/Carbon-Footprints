@@ -104,10 +104,10 @@ const GetFuel = () => {
                                 <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Electricity</th>
-                                        <th>Diesel</th>
-                                        <th>Petrol</th>
-                                        <th>Total Emission</th>
+                                        <th>Electricity(KwH)</th>
+                                        <th>Diesel(L)</th>
+                                        <th>Petrol(L)</th>
+                                        <th>Total Emission(Kg)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -142,7 +142,7 @@ const GetFuel = () => {
                                     <tr>
                                         <th>Date</th>
                                         <th>Food Type</th>
-                                        <th>Total Food Emission</th>
+                                        <th>Total Food Emission(grams)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
