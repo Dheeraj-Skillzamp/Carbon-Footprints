@@ -107,7 +107,7 @@ const GetFuel = () => {
                                         <th>Electricity(KwH)</th>
                                         <th>Diesel(L)</th>
                                         <th>Petrol(L)</th>
-                                        <th>Total Emission(Kg)</th>
+                                        <th>Total Fuel-Carbon  Emission(Kg)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -142,7 +142,7 @@ const GetFuel = () => {
                                     <tr>
                                         <th>Date</th>
                                         <th>Food Type</th>
-                                        <th>Total Food Emission(grams)</th>
+                                        <th>Total Food-Carbon Emission(grams)</th>
                                     </tr>
                                 </thead>
                                 <tbody>

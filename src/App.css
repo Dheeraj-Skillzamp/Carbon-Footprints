@@ -185,7 +185,7 @@ body {
     left: 0;
     top: 0;
     height: 100vh;
-    border-radius: 0 30px 30px 0;
+    border-radius: 0 0px 30px 0;
     overflow-y: auto;
     color: #0c0801;
     overflow-wrap: normal;
@@ -337,7 +337,7 @@ body {
   
   .active {
     color: var(--oxd-primary-font-color, #fff);
-    background-color: var(--oxd-primary-one-color, #ff7b1d);
+    background-color: var(--oxd-primary-one-color, rgb(150, 255, 29));
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     background-image: linear-gradient(

@@ -17,13 +17,16 @@ import Emissiontips from './Admin/emissiontips';
 import Favtips from './Favourite-Tips/Favouritetips';
 import EmissionLeaderboard from './leaderboard/EmissionLeaderboard';
 import Sidebar from './Sidebar/Sidebar';
+import GoalDifference from './Goal/GoalDifference';
+import Logout from './Components/Logout';
+import About from './Admin/About';
 // import Favouritelist from './Favourite-Tips/favouritelist';
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
   // const navigate= useNavigate();
   const role = localStorage.getItem('userRole');
-  console.log("rollllllllllllll", role);
+  // console.log("rollllllllllllll", role);
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
@@ -111,6 +114,15 @@ function App() {
                 </Sidebar>} />
             )}
 
+
+          {loggedin &&
+            (role === "admin" || role === "user") && (
+              <Route path='/profile/goal-difference' element={
+                <Sidebar>
+                  <GoalDifference />
+                </Sidebar>} />
+            )}
+
           {loggedin &&
             (role === "admin" || role === "user") && (
               <Route path='/profile/favourite-tips' element={
@@ -126,6 +138,22 @@ function App() {
                   <EmissionLeaderboard />
                 </Sidebar>} />
             )}
+
+          {loggedin &&
+            (role === "admin" || role === "user") && (
+              <Route path='/about' element={
+                <Sidebar>
+               <About />
+                </Sidebar>} />
+            )}
+
+          {/* {loggedin &&
+            (role === "admin" || role === "user") && (
+              <Route path='/' element={
+                <Sidebar>
+                  <Logout />
+                </Sidebar>} />
+            )} */}
           {/* <Route path='/profile/calculate-fuel' element={<Calculatefuel />} /> */}
           {/* <Route path='/profile/fuel-details' element={<GetFuel></GetFuel>} /> */}
           {/* <Route path='/profile/monthly-fuel' element={<Monthlyemission />} /> */}

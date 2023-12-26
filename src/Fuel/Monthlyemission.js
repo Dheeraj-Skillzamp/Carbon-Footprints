@@ -45,7 +45,7 @@ const Monthlyemission = () => {
             <thead>
               <tr>
                 <th>Month</th>
-                <th>Total Emissions</th>
+                <th>Total Carbon Emissions (Kg)</th>
               </tr>
             </thead>
             <tbody>
@@ -63,7 +63,7 @@ const Monthlyemission = () => {
             <thead>
               <tr>
                 <th>Month</th>
-                <th>Total Emissions</th>
+                <th>Total Carbon Emissions (Kg)</th>
               </tr>
             </thead>
             <tbody>

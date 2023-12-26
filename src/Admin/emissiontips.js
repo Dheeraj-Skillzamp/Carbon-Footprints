@@ -53,7 +53,7 @@ const Emissiontips = () => {
 
     useEffect(() => {
         dailyemissiontips();
-    }, []);
+    }, [setDailytips]);
 
     const addemissiontips = async (e) => {
         e.preventDefault();
@@ -181,7 +181,7 @@ const Emissiontips = () => {
                     <label>Add Emission Tips</label>
                     <textarea
                         type='text'
-                        placeholder='Emission Tips'
+                        placeholder='Emission Tips (min-200 Words)'
                         name='tip_text'
                         value={emissiontips.tip_text}
                         onChange={handleChange}

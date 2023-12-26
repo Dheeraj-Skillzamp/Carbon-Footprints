@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaBars } from 'react-icons/fa';
 import SidebarMenu from './SidebarMenu';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 import { FcPositiveDynamic } from "react-icons/fc";
+import { FcAbout } from "react-icons/fc";
 import { FcManager } from "react-icons/fc";
 import { FcDocument } from "react-icons/fc";
 import { FaBahai } from "react-icons/fa";
@@ -51,6 +52,10 @@ const routes = [
             {
                 path: "/profile/set-goal",
                 name: "Set Goals",
+            },
+            {
+                path:'/profile/goal-difference',
+                name:"Goal & Emission Difference"
             }
         ]
     },
@@ -96,6 +101,11 @@ const routes = [
         path: "/",
         name: "Log Out",
         icon:<RiLogoutCircleRLine />
+    },
+    {
+        path: "/about",
+        name: "About",
+        icon:<FcAbout />
     }
 
 ];
@@ -103,11 +113,17 @@ const routes = [
 const role = localStorage.getItem('userRole');
 console.log("Role", role);
 
+
 const Sidebar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const [modifiedRoutes, setModifiedRoutes] = useState([]);
-
+    const navigate = useNavigate();
+        const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('userRole');
+        navigate('/');
+      };
     useEffect(() => {
         const role = localStorage.getItem('userRole');
         let filteredRoutes = [...routes];
@@ -157,6 +173,7 @@ const Sidebar = ({ children }) => {
         },
     };
 
+    
 
     return (
         <>
@@ -192,7 +209,9 @@ const Sidebar = ({ children }) => {
                                         key={index}
                                         className="link"
                                         activeClassName="active">
-                                        <div className='icon'>{route.icon} </div>
+                                        <div className='icon'
+                                        onClick={route.name === 'Log Out' ? handleLogout : null}
+                                        >{route.icon} </div>
                                         <AnimatePresence>
                                             {isOpen && (
                                                 <motion.div
@@ -200,8 +219,10 @@ const Sidebar = ({ children }) => {
                                                     initial="hidden"
                                                     animate="show"
                                                     exit="hidden"
-                                                    className='link_text pe-auto'>
+                                                    className='link_text pe-auto'
+                                                    onClick={route.name === 'Log Out' ? handleLogout : null}>
                                                     {route.name}
+                                                    
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>

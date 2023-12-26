@@ -95,7 +95,7 @@
 }
 
 .userProfileHeader {
-  color: black;
+  color:green;
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
@@ -113,7 +113,7 @@
 }
 
 .delete-profile {
-  position: relative; /* Ensure the positioning context for absolute positioning */
+  position: relative; 
   margin-top: 300px;
   margin-right: 10px;
 }
@@ -121,13 +121,20 @@
 .delete-profile:hover::before {
   content: "Delete Profile";
   position: absolute;
-  top: -30px; /* Adjust the distance above the button */
+  top: -30px; 
   background-color: red;
   color: white;
   padding: 5px;
   border-radius: 5px;
   display: block;
   margin-left: -90px;
+}
+
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 

@@ -5,10 +5,10 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useEffect , useState} from 'react';
@@ -30,7 +30,7 @@ const settings = [
   // {label:'Favourite Tips', link:'/profile/favourite-tips'},
   {label:'Profile', link:'/profile'},
   {label:'Edit Profile', link:'/profile/edit-profile'},
-  {label: 'Logout',link:'/'} ];
+  {label: 'Log out',link:'/'} ];
 
 
 function Navbar() {
@@ -117,7 +117,7 @@ fetchUsername();
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              {/* <MenuIcon /> */}
             </IconButton>
             <Menu
               id="menu-appbar"
