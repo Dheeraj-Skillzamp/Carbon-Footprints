@@ -83,6 +83,11 @@
   height: 250px;
   width: fit-content;
 }
+
+.tip-video{
+  /* width: 600px; */
+  margin-top: 12px;
+}
 /* Modal */
 .modal {
   background: white;

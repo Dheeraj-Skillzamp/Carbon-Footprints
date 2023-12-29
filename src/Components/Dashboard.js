@@ -133,6 +133,12 @@ const Dashboard = () => {
                         ></img>
                       </div>
                     )}
+                    {tip.tip_video &&(
+                      <video className="tip-video" controls>
+                      <source src={tip.tip_video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    )}
                     {tip.tip_text.length > 220 ? (
                       <>
                         {tip.tip_text.slice(0, 220)}...
@@ -177,6 +183,12 @@ const Dashboard = () => {
                   alt="Tip-Imag"
                 ></img>
               )}
+              {selectedTip.tip_video &&(
+                      <video className="tip-video" controls>
+                      <source src={selectedTip.tip_video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    )}
               <p>{selectedTip.tip_text}</p>
             </div>
           </div>

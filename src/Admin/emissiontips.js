@@ -321,6 +321,12 @@ const Emissiontips = () => {
                       alt="Tip-Imag"
                     ></img>
                   )}
+                  {tip.tip_video && (
+                    <video className="tip-video" controls>
+                      <source src={tip.tip_video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  )}
 
                   <p className="card-text">
                     {tip.tip_text.length > 150 ? (
@@ -360,6 +366,12 @@ const Emissiontips = () => {
                     src={selectedTip.tip_photo}
                     alt=""
                   ></img>
+                )}
+                {selectedTip.tip_video && (
+                  <video className="tip-video" controls>
+                    <source src={selectedTip.tip_video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 )}
               </div>
               <p>{selectedTip.tip_text}</p>
