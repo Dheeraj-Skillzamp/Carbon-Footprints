@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Registration from './Components/Registration';
 import Userprofile from './Components/userprofile';
@@ -18,8 +18,7 @@ import Favtips from './Favourite-Tips/Favouritetips';
 import EmissionLeaderboard from './leaderboard/EmissionLeaderboard';
 import Sidebar from './Sidebar/Sidebar';
 import GoalDifference from './Goal/GoalDifference';
-import Logout from './Components/Logout';
-import About from './Admin/About';
+import Help from './Admin/Help ';
 // import Favouritelist from './Favourite-Tips/favouritelist';
 
 function App() {
@@ -141,9 +140,9 @@ function App() {
 
           {loggedin &&
             (role === "admin" || role === "user") && (
-              <Route path='/about' element={
+              <Route path='/help' element={
                 <Sidebar>
-               <About />
+                  <Help />
                 </Sidebar>} />
             )}
 

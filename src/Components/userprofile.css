@@ -1,5 +1,3 @@
-
-
 .profilebackground {
   position: absolute;
   background-color: silver;
@@ -18,12 +16,12 @@
   z-index: -1;
 }
 
-.userProfileDetails{
+.userProfileDetails {
   font-size: 1rem;
   font-weight: bold;
 }
 
-.userProfileDetails span{
+.userProfileDetails span {
   font-weight: normal;
 }
 .containerp {
@@ -50,7 +48,7 @@
   flex-grow: 1;
   color: black;
   font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .userBackImage {
@@ -65,13 +63,15 @@
 .editbutton {
   cursor: pointer;
   position: absolute;
-  margin-left: 15px;
+  /* margin-left: 15px; */
   color: white;
-  margin-top: -25px;
+  /* margin-top: -25px; */
+  right: 0;
+  margin-right: 120px;
 }
 
 .editbutton::after {
-  content: 'Edit your profile';
+  content: "Edit your profile";
   display: none;
   position: absolute;
   top: -30px;
@@ -95,7 +95,7 @@
 }
 
 .userProfileHeader {
-  color:green;
+  color: green;
   font-size: 24px;
   margin-bottom: 10px;
   text-align: center;
@@ -113,15 +113,15 @@
 }
 
 .delete-profile {
-  position: relative; 
-  margin-top: 300px;
+  position: relative;
+  /* margin-top: 300px; */
   margin-right: 10px;
 }
 
 .delete-profile:hover::before {
   content: "Delete Profile";
   position: absolute;
-  top: -30px; 
+  top: -30px;
   background-color: red;
   color: white;
   padding: 5px;
@@ -136,7 +136,6 @@
   justify-content: center;
   height: 100vh;
 }
-
 
 /* Media Queries */
 
@@ -162,10 +161,10 @@
   .editbutton {
     margin-left: 5px;
   }
-  .userProfileHeader{
+  .userProfileHeader {
     font-size: 20px;
   }
-  .details{
+  .details {
     font-size: 15px;
   }
 }

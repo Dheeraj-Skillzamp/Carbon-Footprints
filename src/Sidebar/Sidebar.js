@@ -21,7 +21,7 @@ const routes = [
     {
         // path: "/profile/calculate-fuel",
         name: "Fuel",
-        icon:<FaBahai  />,
+        icon: <FaBahai />,
         subRoutes: [
             {
                 path: "/profile/calculate-fuel",
@@ -43,7 +43,7 @@ const routes = [
     {
         // path: "/profile/set-goal",
         name: "Goals",
-        icon:<GoGoal />,
+        icon: <GoGoal />,
         subRoutes: [
             {
                 path: "/profile/goal-details",
@@ -54,27 +54,27 @@ const routes = [
                 name: "Set Goals",
             },
             {
-                path:'/profile/goal-difference',
-                name:"Goal & Emission Difference"
+                path: '/profile/goal-difference',
+                name: "Goal & Emission Difference"
             }
         ]
     },
     {
         // path: "/profile/leaderboard",
         name: "LeaderBoard",
-        icon:<FcPositiveDynamic />,
+        icon: <FcPositiveDynamic />,
         subRoutes: [
             {
                 path: "/profile/leaderboard",
                 name: "LeaderBoard",
-                
+
             }
         ]
     },
     {
         path: "/profile",
         name: "Profile",
-        icon:<FcManager />,
+        icon: <FcManager />,
         subRoutes: [
             {
                 path: "/profile",
@@ -94,19 +94,19 @@ const routes = [
     {
         path: "/admin/emission-tips",
         name: "Emission Tips",
-        icon:<FcDocument/>
-        
+        icon: <FcDocument />
+
     },
+
     {
+        path: "/help",
+        name: "Help",
+        icon: <FcAbout />
+    }, {
         path: "/",
         name: "Log Out",
-        icon:<RiLogoutCircleRLine />
+        icon: <RiLogoutCircleRLine />
     },
-    {
-        path: "/about",
-        name: "About",
-        icon:<FcAbout />
-    }
 
 ];
 
@@ -119,11 +119,11 @@ const Sidebar = ({ children }) => {
 
     const [modifiedRoutes, setModifiedRoutes] = useState([]);
     const navigate = useNavigate();
-        const handleLogout = () => {
+    const handleLogout = () => {
         localStorage.removeItem('accessToken');
         localStorage.removeItem('userRole');
         navigate('/');
-      };
+    };
     useEffect(() => {
         const role = localStorage.getItem('userRole');
         let filteredRoutes = [...routes];
@@ -173,7 +173,7 @@ const Sidebar = ({ children }) => {
         },
     };
 
-    
+
 
     return (
         <>
@@ -204,13 +204,13 @@ const Sidebar = ({ children }) => {
                                 );
                             } else {
                                 return (
-                                    <NavLink style={{textDecoration:'none'}}
+                                    <NavLink style={{ textDecoration: 'none' }}
                                         to={route.path}
                                         key={index}
                                         className="link"
                                         activeClassName="active">
                                         <div className='icon'
-                                        onClick={route.name === 'Log Out' ? handleLogout : null}
+                                            onClick={route.name === 'Log Out' ? handleLogout : null}
                                         >{route.icon} </div>
                                         <AnimatePresence>
                                             {isOpen && (
@@ -220,9 +220,10 @@ const Sidebar = ({ children }) => {
                                                     animate="show"
                                                     exit="hidden"
                                                     className='link_text pe-auto'
-                                                    onClick={route.name === 'Log Out' ? handleLogout : null}>
+                                                    onClick={route.name === 'Log Out' ? handleLogout : null}
+                                                    >
                                                     {route.name}
-                                                    
+
                                                 </motion.div>
                                             )}
                                         </AnimatePresence>

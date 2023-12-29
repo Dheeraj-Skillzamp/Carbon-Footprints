@@ -16,7 +16,7 @@ const UserProfileDetails = ({ details, streak, onDelete, onEdit }) => {
       <div className='containerdd'>
         <div className='img-cont'>
           <img className="userProfileImage" src={`http://127.0.0.1:8000/${details.profile_image}`} alt='' />
-          <span className='editbutton' onClick={onEdit} style={{ fontSize: '1rem', }}><FaRegEdit fontSize={'1.5rem'} color='red' /></span>
+          <span className='editbutton' onClick={onEdit} style={{ fontSize: '1rem', }}><FaRegEdit fontSize={'1.5rem'} color='blue' /></span>
         </div>
         <div className='details'>
           <h2 className="userProfileHeader">{details.owner}</h2>
@@ -25,7 +25,7 @@ const UserProfileDetails = ({ details, streak, onDelete, onEdit }) => {
           <p className="userProfileDetails">Contact: <span>{details.phone}</span></p><br></br>
           <p className="userProfileDetails">Total Carbon Emissions: <span>{details.total_carbon_emissions}</span></p><br></br>
           {streak ? (
-            <p className="userstreaks">Your Streaks: {streak.current_streak}</p>
+            <p className="userstreaks">Your Streaks: {streak?.current_streak}</p>
           ) : (
             <p className="loadingText">Your Streaks: 0 (Add Food Details For Streak....)</p>
           )}
@@ -49,42 +49,95 @@ const Userprofile = () => {
     navigate('/profile/edit-profile');
   };
 
-  const fetchUserData = async () => {
-    try {
-      const accessToken = localStorage.getItem('accessToken');
+  // const fetchUserData = async () => {
+  //   try {
+  //     const accessToken = localStorage.getItem('accessToken');
 
-      if (!accessToken) {
-        console.error('Access token not available');
-        toast.error('Access token not available');
-        return;
-      }
+  //     if (!accessToken) {
+  //       console.error('Access token not available');
+  //       toast.error('Access token not available');
+  //       return;
+  //     }
 
-      const [profileResponse, streakResponse] = await Promise.all([
-        axios.get("http://127.0.0.1:8000/api/user/profiles/detail/", {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-          },
-        }),
-        axios.get("http://127.0.0.1:8000/api/user/daily-streak/", {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-          },
-        }),
-      ]);
+  //     const [profileResponse, streakResponse] = await Promise.all([
+  //       axios.get("http://127.0.0.1:8000/api/user/profiles/detail/", {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': `Bearer ${accessToken}`,
+  //         },
+  //       }),
+  //       axios.get("http://127.0.0.1:8000/api/user/daily-streak/", {
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': `Bearer ${accessToken}`,
+  //         },
+  //       }),
+  //     ]);
 
-      setDetails(profileResponse.data);
-      setStreak(streakResponse.data);
-      console.log("profile", profileResponse.data);
-      console.log("streak", streakResponse.data);
-    } catch (error) {
-      console.error('Error occurred while fetching data', error);
-      toast.error('Error occurred while fetching data', error);
-    } finally {
-      setLoading(false);
+  //     setDetails(profileResponse.data);
+  //     setStreak(streakResponse?.data);
+  //     console.log("profile", profileResponse.data);
+  //     console.log("streak==========", streakResponse?.data);
+  //   } catch (error) {
+  //     console.error('Error occurred while fetching data', error);
+  //     toast.error('Error occurred while fetching data', error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
+
+
+const fetchUserData = async () => {
+        try {
+            const accessToken = localStorage.getItem('accessToken');
+
+            if (!accessToken) {
+                console.error('Access token not available');
+                toast.error('Access token not available');
+                return;
+            }
+
+            const response = await axios.get("http://127.0.0.1:8000/api/user/profiles/detail/", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            setDetails(response.data);
+            console.log("profile", response.data);
+
+        } catch (error) {
+            console.error('Error occurred while fetching data', error);
+            toast.error('Error occurred while fetching data', error);
+        }
     }
-  }
+
+    const streakdetails = async () => {
+        try {
+            const accessToken = localStorage.getItem('accessToken');
+
+            if (!accessToken) {
+                console.error('Access Token not Available');
+                toast.error('Access Token not Available');
+                return;
+            }
+
+            const response = await axios.get("http://127.0.0.1:8000/api/user/daily-streak/", {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`,
+                },
+            });
+
+            setStreak(response.data);
+            console.log("streak", response.data);
+        } catch (error) {
+            console.error('Error occurred while fetching streak', error);
+        }
+    };
+
 
   const deleteuser = async () => {
     try {
@@ -112,9 +165,10 @@ const Userprofile = () => {
 
   useEffect(() => {
     fetchUserData();
-    setTimeout(() => {
+    streakdetails();
+        setTimeout(() => {
         setLoading(false);
-      }, 10000);
+      }, 1000);
   }, []);
 
   return (
