@@ -40,7 +40,7 @@ const Monthlyemission = () => {
       <Navbar />
       <div className="container">
         <div className="emission-table">
-          <h2 className="table-title">Current Month Emission Data</h2>
+          <h2 className="table-title">Current Month Carbon Emission Data</h2>
           <table className="data-table">
             <thead>
               <tr>
@@ -58,7 +58,7 @@ const Monthlyemission = () => {
         </div>
   
         <div className="emission-table">
-          <h2 className="table-title">Past Months Emission Data</h2>
+          <h2 className="table-title">Past Months Carbon Emission Data</h2>
           <table className="data-table">
             <thead>
               <tr>

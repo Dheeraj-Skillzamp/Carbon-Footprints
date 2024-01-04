@@ -1,150 +1,175 @@
-
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Registration from './Components/Registration';
-import Userprofile from './Components/userprofile';
-import Calculatefuel from './Fuel/Calculatefuel'
-import Editprofile from './Components/Editprofile';
-import Login from './Components/Login';
-import Dashboard from './Components/Dashboard';
-import GetFuel from './Fuel/GetFuel';
-import Monthlyemission from './Fuel/Monthlyemission';
-import Goaldetails from './Goal/Goaldetails';
-import SetGoal from './Goal/SetGoal';
-import AdminLogin from './Admin/adminLogin';
-import { useEffect, useState } from 'react';
-import Emissiontips from './Admin/emissiontips';
-import Favtips from './Favourite-Tips/Favouritetips';
-import EmissionLeaderboard from './leaderboard/EmissionLeaderboard';
-import Sidebar from './Sidebar/Sidebar';
-import GoalDifference from './Goal/GoalDifference';
-import Help from './Admin/Help ';
-// import Favouritelist from './Favourite-Tips/favouritelist';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Registration from "./Components/Registration";
+import Userprofile from "./Components/userprofile";
+import Calculatefuel from "./Fuel/Calculatefuel";
+import Editprofile from "./Components/Editprofile";
+import Login from "./Components/Login";
+import Dashboard from "./Components/Dashboard";
+import GetFuel from "./Fuel/GetFuel";
+import Monthlyemission from "./Fuel/Monthlyemission";
+import Goaldetails from "./Goal/Goaldetails";
+import SetGoal from "./Goal/SetGoal";
+import AdminLogin from "./Admin/adminLogin";
+import { useEffect, useState } from "react";
+import Emissiontips from "./Admin/emissiontips";
+import Favtips from "./Favourite-Tips/Favouritetips";
+import EmissionLeaderboard from "./leaderboard/EmissionLeaderboard";
+import Sidebar from "./Sidebar/Sidebar";
+import GoalDifference from "./Goal/GoalDifference";
+import Help from "./Admin/Help ";
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
-  // const navigate= useNavigate();
-  const role = localStorage.getItem('userRole');
-  // console.log("rollllllllllllll", role);
-
+  const role = localStorage.getItem("userRole");
+  const token = localStorage.getItem("accessToken");
   useEffect(() => {
-    const token = localStorage.getItem('accessToken');
     if (token && role) {
+      // Navigate("/login")
+      // setLoggedin(false);
       setLoggedin(true);
-    } else {
-      // navigate('/');
-
     }
-  }, [])
+  }, []);
+
   return (
-    <div>
-
-      <BrowserRouter>
+    <BrowserRouter>
+      <div>
         <Routes>
-
           <Route index element={<Registration />} />
-          <Route path='/login' element={<Login></Login>} />
-          <Route path='/admin' element={<AdminLogin />} />
+          <Route path="/login" element={<Login></Login>} />
+          <Route path="/admin" element={<AdminLogin />} />
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route
-                path='/dashboard'
-                element={
-                  <Sidebar>
-                    <Dashboard />
-                  </Sidebar>
-                } />
-            )}
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/dashboard"
+              element={
+                <Sidebar>
+                  <Dashboard />
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile"
+              element={
                 <Sidebar>
                   <Userprofile />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/edit-profile' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/edit-profile"
+              element={
                 <Sidebar>
                   <Editprofile />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/calculate-fuel' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/calculate-fuel"
+              element={
                 <Sidebar>
                   <Calculatefuel />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/fuel-details' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/fuel-details"
+              element={
                 <Sidebar>
                   <GetFuel />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/monthly-fuel' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/monthly-fuel"
+              element={
                 <Sidebar>
                   <Monthlyemission />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/goal-details' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/goal-details"
+              element={
                 <Sidebar>
                   <Goaldetails />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/set-goal' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/set-goal"
+              element={
                 <Sidebar>
                   <SetGoal />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/goal-difference' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/goal-difference"
+              element={
                 <Sidebar>
                   <GoalDifference />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/favourite-tips' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/favourite-tips"
+              element={
                 <Sidebar>
                   <Favtips />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/profile/leaderboard' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/leaderboard"
+              element={
                 <Sidebar>
                   <EmissionLeaderboard />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/help' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/help"
+              element={
                 <Sidebar>
                   <Help />
-                </Sidebar>} />
-            )}
+                </Sidebar>
+              }
+            />
+          )}
 
           {/* {loggedin &&
             (role === "admin" || role === "user") && (
@@ -161,18 +186,19 @@ function App() {
           {/* <Route path='/profile/favourite-tips' element={<Favtips />} /> */}
           {/* <Route path='/profile/leaderboard' element={<EmissionLeaderboard />} /> */}
 
-          {loggedin &&
-            (role === "admin") && (
-              <Route path='/admin/emission-tips' element={
+          {loggedin && role === "admin" && (
+            <Route
+              path="/admin/emission-tips"
+              element={
                 <Sidebar>
                   <Emissiontips />
-                </Sidebar>} />
-            )
-          }
+                </Sidebar>
+              }
+            />
+          )}
         </Routes>
-      </BrowserRouter>
-    </div>
-
+      </div>
+    </BrowserRouter>
   );
 }
 

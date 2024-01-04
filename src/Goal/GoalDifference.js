@@ -49,7 +49,7 @@ const GoalDifference = () => {
     const chart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["Total Goal", "Total Emission", "Difference"],
+        labels: ["Total Goal", "Total Emission", "Remaining"],
         datasets: [
           {
             label: "Difference b/w Total Emission & Total Goal",
@@ -99,7 +99,7 @@ const GoalDifference = () => {
       ) : (
         <>
           <div style={{ height: "500px", width: "900px", marginLeft: "25px" }}>
-            <canvas id="chartCanvas" width="800px"></canvas>
+            <canvas id="chartCanvas" width="400px"></canvas>
           </div>
           <div style={{marginLeft:"25px", width:"900px", marginBottom:"10px"}}> 
             <table>
@@ -120,7 +120,7 @@ const GoalDifference = () => {
                   <td>{goaldiff.total_emission}</td>
                 </tr>
                 <tr>
-                  <td>Difference</td>
+                  <td>Remaining</td>
                   <td>{goaldiff.difference}</td>
                 </tr>
               </tbody>

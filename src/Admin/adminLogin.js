@@ -85,6 +85,7 @@ const AdminLogin = () => {
                                     className='ad-pass'
                                     placeholder='Password'
                                     name='password'
+                                    type='password'
                                     onChange={handleChange} />
                             </div>
                             <button onClick={adminlogin}>Login</button>

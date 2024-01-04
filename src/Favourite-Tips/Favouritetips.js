@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import Navbar from '../Headers&Footers/Headers';
-import { AiTwotoneCloseCircle } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import './Favtips.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import Navbar from "../Headers&Footers/Headers";
+import { AiTwotoneCloseCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import "./Favtips.css";
 
 const Favtips = () => {
   const [favtips, setFavtips] = useState([]);
@@ -13,61 +13,67 @@ const Favtips = () => {
 
   const favouritetips = async () => {
     try {
-      const accessToken = localStorage.getItem('accessToken');
+      const accessToken = localStorage.getItem("accessToken");
 
       if (!accessToken) {
-        console.error('Access Token not Available');
-        toast.error('Access Token not Available');
+        console.error("Access Token not Available");
+        toast.error("Access Token not Available");
         return;
       }
 
-      const response = await axios.get('http://127.0.0.1:8000/api/user/create-favorite/', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/user/create-favorite/",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
 
       if (response.status >= 200 && response.status < 300) {
         setFavtips(response.data);
-        console.log('tips', response.data);
+        console.warn("tipss", response.data);
       } else {
-        console.log('Favorite Tips not fetched');
-        toast.error('Favorite Tips not fetched');
+        console.log("Favorite Tips not fetched");
+        toast.error("Favorite Tips not fetched");
       }
     } catch (error) {
-      console.log('Error occurred while fetching favorite tips', error);
+      console.log("Error occurred while fetching favorite tips", error);
     }
   };
 
   const removeFavTip = async (favorite_id) => {
     try {
-      const accessToken = localStorage.getItem('accessToken');
+      const accessToken = localStorage.getItem("accessToken");
 
       if (!accessToken) {
-        console.error('Access Token not Available');
-        toast.error('Access Token not Available');
+        console.error("Access Token not Available");
+        toast.error("Access Token not Available");
         return;
       }
 
-      const response = await axios.delete('http://127.0.0.1:8000/api/user/create-favorite/', {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-        data: { favorite_id }, // Pass tip ID as a payload
-      });
+      const response = await axios.delete(
+        "http://127.0.0.1:8000/api/user/create-favorite/",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          data: { favorite_id }, 
+        }
+      );
 
       if (response.status >= 200 && response.status < 300) {
-        toast.success('Tip removed from favorites successfully');
-        favouritetips(); // Refresh the list after removal
-        setShowModal(false); // Close the modal after removal
+        toast.success("Tip removed from favorites successfully");
+        favouritetips(); 
+        setShowModal(false); 
       } else {
-        console.log('Error occurred while removing favorite tip');
-        toast.error('Error occurred while removing favorite tip');
+        console.log("Error occurred while removing favorite tip");
+        toast.error("Error occurred while removing favorite tip");
       }
     } catch (error) {
-      console.log('Error occurred while removing favorite tip', error);
+      console.log("Error occurred while removing favorite tip", error);
     }
   };
 
@@ -89,13 +95,27 @@ const Favtips = () => {
         <div className="column-container">
           {favtips.map((tip, index) => (
             <div key={tip.id} className="card">
-              
               <div className="card-body">
-              {/* <span 
+                {/* <span 
                className="remove-fav"
               onClick={() => removeFavTip(tip.id)} >Remove from Favorites</span> */}
                 <h2 className="card-title">Tip :</h2>
                 <p className="card-subtitle">Updated Date:{tip.created_at}</p>
+                {tip.tip_photo && (
+                  <div className="card-image">
+                    <img
+                      className="photo"
+                      src={`http://127.0.0.1:8000${tip.tip_photo}`}
+                      alt="Tip-Imag"
+                    ></img>
+                  </div>
+                )}
+                {tip.tip_video && (
+                  <video className="video" controls>
+                    <source src={`http://127.0.0.1:8000${tip.tip_video} `}type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                )}
                 <p className="card-text">
                   {tip.tip_text.length > 200 ? (
                     <>
@@ -106,19 +126,19 @@ const Favtips = () => {
                       >
                         Read More
                       </Link>
-                      
                     </>
-                    
                   ) : (
                     tip.tip_text
                   )}
                 </p>
-                <div style={{marginTop:'50px'}}>
-                <span 
-                     className="remove-fav"
-                    onClick={() => removeFavTip(tip.id)} >Remove from Favorites</span>
+                <div style={{ marginTop: "50px" }}>
+                  <span
+                    className="remove-fav"
+                    onClick={() => removeFavTip(tip.id)}
+                  >
+                    Remove from Favorites
+                  </span>
                 </div>
-               
               </div>
             </div>
           ))}
@@ -130,15 +150,31 @@ const Favtips = () => {
         <div className="modal-overlay">
           <div className="modal">
             <p
-              style={{color:'red', cursor:'pointer'}}
-              onClick={() => removeFavTip(selectedTip.id)} >
+              style={{ color: "red", cursor: "pointer" }}
+              onClick={() => removeFavTip(selectedTip.id)}
+            >
               Remove from Favourites
             </p>
             <h2>Tip Details</h2>
-            <p className="card-subtitle">Updated Date:{selectedTip.created_at}</p>
+            <p className="card-subtitle">
+              Updated Date:{selectedTip.created_at}
+            </p>
             <span className="close-button" onClick={() => setShowModal(false)}>
               <AiTwotoneCloseCircle />
             </span>
+            {selectedTip.tip_photo && (
+              <img
+              className="photo"
+              src={`http://127.0.0.1:8000${selectedTip.tip_photo}`}
+              alt="Tip-Imag"
+            />
+            )}
+            {selectedTip.tip_video && (
+              <video className="video" controls>
+              <source src={`http://127.0.0.1:8000${selectedTip.tip_video}`} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            )}
             <p>{selectedTip.tip_text}</p>
           </div>
         </div>

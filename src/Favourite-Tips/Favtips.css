@@ -30,6 +30,15 @@
   color: red;
     cursor: pointer;
    }
+
+.photo{
+  margin-top: 15px;
+  height: 250px;
+  width: fit-content;
+}
+.video{
+  margin-top: 10px;
+}
 /* 
 
 /* Mobile devices 

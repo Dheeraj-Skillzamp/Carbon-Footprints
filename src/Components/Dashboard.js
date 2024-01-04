@@ -110,12 +110,12 @@ const Dashboard = () => {
 
                   <h5 className="card-title">Tips</h5>
                   <div className="fav-button">
-                    <span className="add-fav" onClick={() => addtofav(tip.id)}>
-                      {fav ? (
+                    <span className="add-fav" style={{color:'red', cursor:'pointer'}} onClick={() => addtofav(tip.id)}>
+                      {/* {fav ? (
                         <FaHeart style={{ color: "red" }} />
                       ) : (
                         <FaRegHeart />
-                      )}{" "}
+                      )}{" "} */}
                       Favourites
                     </span>
                     {/* <button>
@@ -133,11 +133,11 @@ const Dashboard = () => {
                         ></img>
                       </div>
                     )}
-                    {tip.tip_video &&(
+                    {tip.tip_video && (
                       <video className="tip-video" controls>
-                      <source src={tip.tip_video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                        <source src={tip.tip_video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     )}
                     {tip.tip_text.length > 220 ? (
                       <>
@@ -167,7 +167,8 @@ const Dashboard = () => {
                 onClick={() => addtofav(selectedTip.id)}
                 style={{ cursor: "pointer", color: "red" }}
               >
-                Add to Favourites {fav ? <FaHeart /> : <FaRegHeart />}
+                Add to Favourites
+                 {/* {fav ? <FaHeart /> : <FaRegHeart />} */}
               </label>
               <h2>Tip Details</h2>
               <span
@@ -183,12 +184,12 @@ const Dashboard = () => {
                   alt="Tip-Imag"
                 ></img>
               )}
-              {selectedTip.tip_video &&(
-                      <video className="tip-video" controls>
-                      <source src={selectedTip.tip_video} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                    )}
+              {selectedTip.tip_video && (
+                <video className="tip-video" controls>
+                  <source src={selectedTip.tip_video} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
               <p>{selectedTip.tip_text}</p>
             </div>
           </div>
