@@ -24,13 +24,13 @@ import { Link } from '@mui/material';
 //   {label:'Monthly Fuel Details', link:'/profile/monthly-fuel'},
 //   {label :'Emission Tips', link :'/admin/emission-tips'},
 // ];
-const settings = [
+// const settings = [
   // {label:'Leader Board', link:'/profile/leaderboard'},
   // {label :'Goal Details', link:'/profile/goal-details'},
   // {label:'Favourite Tips', link:'/profile/favourite-tips'},
-  {label:'Profile', link:'/profile'},
-  {label:'Edit Profile', link:'/profile/edit-profile'},
-  {label: 'Log out',link:'/'} ];
+  // {label:'Profile', link:'/profile'},
+  // {label:'Edit Profile', link:'/profile/edit-profile'},
+  // {label: 'Log out',link:'/'} ];
 
 
 function Navbar() {
@@ -183,7 +183,7 @@ fetchUsername();
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="More Options">
+            <Tooltip >
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                {details ?(
                 <Avatar src={`http://127.0.0.1:8000/${details.profile_image}`}  />
@@ -192,7 +192,7 @@ fetchUsername();
                )} 
               </IconButton>
             </Tooltip>
-            <Menu
+            {/* <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
@@ -207,16 +207,16 @@ fetchUsername();
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
+            > */}
+              {/* {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                   
                    <Link href={setting.link} color="inherit" underline="none" >
                   {setting.label}
                 </Link>
                 </MenuItem>
-              ))}
-            </Menu>
+              ))} */}
+            {/* </Menu> */}
           </Box>
         </Toolbar>
       </Container>
@@ -225,156 +225,3 @@ fetchUsername();
 }
 
 export default Navbar;
-
-// import * as React from 'react';
-// import Box from '@mui/material/Box';
-// import Avatar from '@mui/material/Avatar';
-// import Menu from '@mui/material/Menu';
-// import MenuItem from '@mui/material/MenuItem';
-// import ListItemIcon from '@mui/material/ListItemIcon';
-// import Divider from '@mui/material/Divider';
-// import IconButton from '@mui/material/IconButton';
-// import Tooltip from '@mui/material/Tooltip';
-// import Logout from '@mui/icons-material/Logout';
-// import { Link } from 'react-router-dom';
-// import EmojiNatureIcon from '@mui/icons-material/EmojiNature';
-// import Typography from '@mui/material/Typography';
-// import { AppBar, Container } from '@mui/material';
-
-
-// export default function Navbar() {
-//   const [anchorEl, setAnchorEl] = React.useState(null);
-//   const open = Boolean(anchorEl);
-//   const handleClick = (event) => {
-//     setAnchorEl(event.currentTarget);
-//   };
-//   const handleClose = () => {
-//     setAnchorEl(null);
-//   };
-//   return (
-//     <>
-//       <AppBar position="static" sx={{ backgroundColor: 'rgb(75 131 75)' }}>
-        
-
-//           <Box sx={{
-//             display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'center ',
-//             height: '60px'
-//           }}>
-//             <EmojiNatureIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, fontSize: '50px' }} />
-//             <Typography
-//               variant="h6"
-//               noWrap
-//               component="a"
-//               href="/home"
-//               sx={{
-//                 mr: 2,
-//                 display: { xs: 'none', md: 'flex' },
-//                 fontFamily: 'monospace',
-//                 fontWeight: 700,
-//                 letterSpacing: '.2rem',
-//                 color: 'inherit',
-//                 textDecoration: 'none',
-//               }}
-//             >
-//               Carbon FootPrints
-//             </Typography>
-
-//             <Link to='/dashboard' style={{ textDecoration: 'none' }}>
-
-//               <h3 style={{ marginLeft: "35px", color: 'white' }}>Dashboard</h3>
-//             </Link>
-
-
-//             <Link to="/profile" style={{ textDecoration: 'none' }}>
-
-//               <h3 style={{ marginLeft: "35px", color: 'white' }}>Profile</h3>
-//             </Link>
-
-
-//             <Link to="/profile/edit-profile" style={{ textDecoration: 'none' }}>
-
-//               <h3 style={{ marginLeft: "35px", color: 'white' }}>Edit Profile</h3>
-//             </Link>
-
-//             <Link to="/profile/fuel-details" style={{ textDecoration: 'none' }}>
-
-//               <h3 style={{ marginLeft: "35px", color: 'white' }}>Calculate Fuel</h3>
-//             </Link>
-
-
-//             <Link to="/profile/fuel" style={{ textDecoration: 'none' }}>
-
-//               <h3 style={{ marginLeft: "35px", color: 'white' }}>See Fuel Used</h3>
-//             </Link>
-
-//             <Tooltip title="Account settings">
-//               <IconButton
-//                 onClick={handleClick}
-//                 size="small"
-//                 sx={{ ml: 2 }}
-//                 aria-controls={open ? 'account-menu' : undefined}
-//                 aria-haspopup="true"
-//                 aria-expanded={open ? 'true' : undefined}
-//               >
-//                 <Avatar sx={{ width: 32, height: 32 }}></Avatar>
-//               </IconButton>
-//             </Tooltip>
-//           </Box>
-//           <Menu
-//             anchorEl={anchorEl}
-//             id="account-menu"
-//             open={open}
-//             onClose={handleClose}
-//             onClick={handleClose}
-//             PaperProps={{
-//               elevation: 0,
-//               sx: {
-//                 overflow: 'visible',
-//                 filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-//                 mt: 1.5,
-//                 '& .MuiAvatar-root': {
-//                   width: 32,
-//                   height: 32,
-//                   ml: -0.5,
-//                   mr: 1,
-//                 },
-//                 '&:before': {
-//                   content: '""',
-//                   display: 'block',
-//                   position: 'absolute',
-//                   top: 0,
-//                   right: 14,
-//                   width: 10,
-//                   height: 10,
-//                   bgcolor: 'background.paper',
-//                   transform: 'translateY(-50%) rotate(45deg)',
-//                   zIndex: 0,
-//                 },
-//               },
-//             }}
-//             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-//             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-//           >
-
-//             <MenuItem onClick={handleClose}>
-//               <Link to='/profile'>
-//                 <Avatar /> My account</Link>
-//             </MenuItem>
-//             <Divider />
-
-//             <MenuItem onClick={handleClose}>
-//               <Link to='/'>
-//                 <ListItemIcon>
-//                   <Logout fontSize="small" />
-//                 </ListItemIcon>
-//                 Logout
-//               </Link>
-//             </MenuItem>
-
-//           </Menu>
-       
-//       </AppBar>
-//     </>
-//   );
-// }
-

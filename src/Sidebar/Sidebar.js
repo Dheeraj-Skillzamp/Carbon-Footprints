@@ -107,7 +107,7 @@ const routes = [
 ];
 
 const role = localStorage.getItem("userRole");
-console.log("Role", role);
+// console.log("Role", role);
 
 const Sidebar = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -181,7 +181,7 @@ const Sidebar = ({ children }) => {
         >
           <div className="top_section">
             <div className="bars">
-              <FaBars onClick={toggle} />
+              <FaBars onClick={toggle} style={{ cursor: "pointer" }} />
             </div>
           </div>
 

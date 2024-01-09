@@ -55,7 +55,7 @@ const AdminLogin = () => {
             }
         } catch (error) {
             console.log("Error Occured while Login", error);
-            toast("Khao Maa Kasam Id Password Sahi Dala hai", error)
+            toast("Incoorect User Id or Password", error)
         }
     }
     return (

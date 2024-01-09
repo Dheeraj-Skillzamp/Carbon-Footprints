@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
 import "./App.css";
 import Registration from "./Components/Registration";
 import Userprofile from "./Components/userprofile";
@@ -18,18 +18,35 @@ import EmissionLeaderboard from "./leaderboard/EmissionLeaderboard";
 import Sidebar from "./Sidebar/Sidebar";
 import GoalDifference from "./Goal/GoalDifference";
 import Help from "./Admin/Help ";
+import Logout from "./Components/Logout";
+import { gapi } from "gapi-script";
+
+const clientId ="541547830041-ll8mudkm38ra86s4eibvtjsjmtgds3ql.apps.googleusercontent.com";
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
   const role = localStorage.getItem("userRole");
   const token = localStorage.getItem("accessToken");
+
   useEffect(() => {
     if (token && role) {
-      // Navigate("/login")
-      // setLoggedin(false);
       setLoggedin(true);
+    } else if(!token) {
+      setLoggedin(false);
+      // window.location.href = '/login';
     }
-  }, []);
+  }, [token, role]);
+  
+  useEffect(()=>{
+    function start(){
+      gapi.client.init({
+        clientId:clientId,
+        scope:""
+      })
+    };
+    gapi.load('client:auth2',start);
+  })
+
 
   return (
     <BrowserRouter>
@@ -171,13 +188,13 @@ function App() {
             />
           )}
 
-          {/* {loggedin &&
+          {loggedin &&
             (role === "admin" || role === "user") && (
               <Route path='/' element={
                 <Sidebar>
                   <Logout />
                 </Sidebar>} />
-            )} */}
+            )}
           {/* <Route path='/profile/calculate-fuel' element={<Calculatefuel />} /> */}
           {/* <Route path='/profile/fuel-details' element={<GetFuel></GetFuel>} /> */}
           {/* <Route path='/profile/monthly-fuel' element={<Monthlyemission />} /> */}
