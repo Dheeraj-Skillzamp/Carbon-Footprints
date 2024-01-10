@@ -10,6 +10,8 @@ const Favtips = () => {
   const [favtips, setFavtips] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedTip, setSelectedTip] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tipsPerPage] = useState(5);
 
   const favouritetips = async () => {
     try {
@@ -60,14 +62,14 @@ const Favtips = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${accessToken}`,
           },
-          data: { favorite_id }, 
+          data: { favorite_id },
         }
       );
 
       if (response.status >= 200 && response.status < 300) {
         toast.success("Tip removed from favorites successfully");
-        favouritetips(); 
-        setShowModal(false); 
+        favouritetips();
+        setShowModal(false);
       } else {
         console.log("Error occurred while removing favorite tip");
         toast.error("Error occurred while removing favorite tip");
@@ -86,14 +88,31 @@ const Favtips = () => {
     setShowModal(true);
   };
 
+  const indexOfLastTip = currentPage * tipsPerPage;
+  const indexOfFirstTip = indexOfLastTip - tipsPerPage;
+  const currentTips = favtips.slice(indexOfFirstTip, indexOfLastTip);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <>
       <ToastContainer />
       <Navbar />
+
       <h2 className="headingg">Favourite Tips</h2>
+      <div className="pagination">
+      <span>Page No : </span> 
+        {Array.from({
+          length: Math.ceil(favtips.length / tipsPerPage),
+        }).map((_, index) => (
+          
+          <button key={index} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
+      </div>
       <div className="dailytips-container mt-5">
         <div className="column-container">
-          {favtips.map((tip, index) => (
+          {currentTips.map((tip, index) => (
             <div key={tip.id} className="card">
               <div className="card-body">
                 {/* <span 
@@ -112,7 +131,10 @@ const Favtips = () => {
                 )}
                 {tip.tip_video && (
                   <video className="video" controls>
-                    <source src={`http://127.0.0.1:8000${tip.tip_video} `}type="video/mp4" />
+                    <source
+                      src={`http://127.0.0.1:8000${tip.tip_video} `}
+                      type="video/mp4"
+                    />
                     Your browser does not support the video tag.
                   </video>
                 )}
@@ -164,16 +186,19 @@ const Favtips = () => {
             </span>
             {selectedTip.tip_photo && (
               <img
-              className="photo"
-              src={`http://127.0.0.1:8000${selectedTip.tip_photo}`}
-              alt="Tip-Imag"
-            />
+                className="photo"
+                src={`http://127.0.0.1:8000${selectedTip.tip_photo}`}
+                alt="Tip-Imag"
+              />
             )}
             {selectedTip.tip_video && (
               <video className="video" controls>
-              <source src={`http://127.0.0.1:8000${selectedTip.tip_video}`} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+                <source
+                  src={`http://127.0.0.1:8000${selectedTip.tip_video}`}
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
             )}
             <p>{selectedTip.tip_text}</p>
           </div>

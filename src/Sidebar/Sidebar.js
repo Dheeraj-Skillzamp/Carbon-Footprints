@@ -37,6 +37,10 @@ const routes = [
         name: "Monthly CE",
         // icon:<AiFillHome />
       },
+      {
+        path:"/profile/user-email",
+        name :"User Email",
+      }
     ],
   },
   {

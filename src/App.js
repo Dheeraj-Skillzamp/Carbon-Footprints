@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Registration from "./Components/Registration";
 import Userprofile from "./Components/userprofile";
@@ -20,8 +20,10 @@ import GoalDifference from "./Goal/GoalDifference";
 import Help from "./Admin/Help ";
 import Logout from "./Components/Logout";
 import { gapi } from "gapi-script";
+import UserEmail from "./Emaildata/UserEmail";
 
-const clientId ="541547830041-ll8mudkm38ra86s4eibvtjsjmtgds3ql.apps.googleusercontent.com";
+const clientId =
+  "541547830041-ll8mudkm38ra86s4eibvtjsjmtgds3ql.apps.googleusercontent.com";
 
 function App() {
   const [loggedin, setLoggedin] = useState(false);
@@ -31,22 +33,21 @@ function App() {
   useEffect(() => {
     if (token && role) {
       setLoggedin(true);
-    } else if(!token) {
+    } else if (!token) {
       setLoggedin(false);
       // window.location.href = '/login';
     }
   }, [token, role]);
-  
-  useEffect(()=>{
-    function start(){
-      gapi.client.init({
-        clientId:clientId,
-        scope:""
-      })
-    };
-    gapi.load('client:auth2',start);
-  })
 
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    }
+    gapi.load("client:auth2", start);
+  });
 
   return (
     <BrowserRouter>
@@ -121,6 +122,16 @@ function App() {
               }
             />
           )}
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/profile/user-email"
+              element={
+                <Sidebar>
+                  <UserEmail />
+                </Sidebar>
+              }
+            />
+          )}
 
           {loggedin && (role === "admin" || role === "user") && (
             <Route
@@ -188,20 +199,16 @@ function App() {
             />
           )}
 
-          {loggedin &&
-            (role === "admin" || role === "user") && (
-              <Route path='/' element={
+          {loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/"
+              element={
                 <Sidebar>
                   <Logout />
-                </Sidebar>} />
-            )}
-          {/* <Route path='/profile/calculate-fuel' element={<Calculatefuel />} /> */}
-          {/* <Route path='/profile/fuel-details' element={<GetFuel></GetFuel>} /> */}
-          {/* <Route path='/profile/monthly-fuel' element={<Monthlyemission />} /> */}
-          {/* <Route path='/profile/goal-details' element={<Goaldetails />} /> */}
-          {/* <Route path='/profile/set-goal' element={<SetGoal />} /> */}
-          {/* <Route path='/profile/favourite-tips' element={<Favtips />} /> */}
-          {/* <Route path='/profile/leaderboard' element={<EmissionLeaderboard />} /> */}
+                </Sidebar>
+              }
+            />
+          )}
 
           {loggedin && role === "admin" && (
             <Route

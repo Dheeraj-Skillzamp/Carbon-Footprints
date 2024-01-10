@@ -6,8 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 import { AiTwotoneCloseCircle } from "react-icons/ai";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { BiSolidLike } from "react-icons/bi";
-import { BiLike } from "react-icons/bi";
+import { BiSolidLike, BiLike } from "react-icons/bi";
 import "./dashboard.css";
 
 const Dashboard = () => {
@@ -17,6 +16,8 @@ const Dashboard = () => {
   const [fav, setFav] = useState(false);
   const [like, setLike] = useState(false);
   const [addFav, setAddFav] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tipsPerPage] = useState(5);
 
   const dailyemissiontips = async () => {
     try {
@@ -90,37 +91,41 @@ const Dashboard = () => {
     dailyemissiontips();
   }, [setDailytips]);
 
-  console.log("idd", selectedTip);
+  const indexOfLastTip = currentPage * tipsPerPage;
+  const indexOfFirstTip = indexOfLastTip - tipsPerPage;
+  const currentTips = dailytips.slice(indexOfFirstTip, indexOfLastTip);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <ToastContainer />
       <Navbar />
       <div>
+        <div className="pagination">
+        <span>Page No : </span> 
+          {Array.from({
+            length: Math.ceil(dailytips.length / tipsPerPage),
+          }).map((_, index) => (
+            <button key={index} onClick={() => paginate(index + 1)}>
+              {index + 1}
+            </button>
+          ))}
+        </div>
         <div className="dailytips-container mt-5">
           <div className="column-container">
-            {dailytips.map((tip, index) => (
+            {currentTips.map((tip, index) => (
               <div key={index} className="card">
                 <div className="card-body">
-                  {/* <span
-                    onClick={() => addtofav(tip.id)}
-                    style={{ fontSize: '1.5rem', cursor: 'pointer' }}
-                  >
-                    {fav ? <FaHeart /> : <FaRegHeart />} Add to Favorites
-                  </span> */}
-
                   <h5 className="card-title">Tips</h5>
                   <div className="fav-button">
-                    <span className="add-fav" style={{color:'red', cursor:'pointer'}} onClick={() => addtofav(tip.id)}>
-                      {/* {fav ? (
-                        <FaHeart style={{ color: "red" }} />
-                      ) : (
-                        <FaRegHeart />
-                      )}{" "} */}
+                    <span
+                      className="add-fav"
+                      style={{ color: "red", cursor: "pointer" }}
+                      onClick={() => addtofav(tip.id)}
+                    >
                       Favourites
                     </span>
-                    {/* <button>
-                  {like ?  <BiSolidLike  style={{color:'blue'}}/> :<BiLike /> }Like
-                    </button> */}
                   </div>
                   <p className="card-subtitle">Updated Date:{tip.updated_at}</p>
                   <p className="card-text">
@@ -168,7 +173,6 @@ const Dashboard = () => {
                 style={{ cursor: "pointer", color: "red" }}
               >
                 Add to Favourites
-                 {/* {fav ? <FaHeart /> : <FaRegHeart />} */}
               </label>
               <h2>Tip Details</h2>
               <span

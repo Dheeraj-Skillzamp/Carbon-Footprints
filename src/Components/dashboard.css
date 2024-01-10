@@ -129,6 +129,29 @@
   margin-right: 15px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination span{
+  padding: 8px 16px;
+  margin: 0 5px;
+}
+.pagination button {
+  background-color: #3498db;
+  color: white;
+  border: 1px solid #3498db;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #2980b9;
+}
+
 /* Responsive styles */
 @media (max-width: 800px) {
   .card {

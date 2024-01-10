@@ -25,6 +25,8 @@ const Emissiontips = () => {
   const [showModal, setShowModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedTip, setSelectedTip] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tipsPerPage] = useState(5);
 
   const dailyemissiontips = async () => {
     try {
@@ -256,6 +258,12 @@ const Emissiontips = () => {
     }
   };
 
+  const indexOfLastTip = currentPage * tipsPerPage;
+  const indexOfFirstTip = indexOfLastTip - tipsPerPage;
+  const currentTips = dailytips.slice(indexOfFirstTip, indexOfLastTip);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <ToastContainer />
@@ -263,6 +271,7 @@ const Emissiontips = () => {
       <div className="emi-head">
         <h2>Emission Tips</h2>
       </div>
+
       <div className="tips-container">
         <div>
           <label>Add Emission Tips</label>
@@ -292,7 +301,7 @@ const Emissiontips = () => {
       <div>
         <div className="dailytips-container mt-5">
           <div className="column-container">
-            {dailytips.map((tip, index) => (
+            {currentTips.map((tip, index) => (
               <div key={index} className="card">
                 <div className="card-body">
                   <h5 className="card-title">Tips</h5>
@@ -345,6 +354,16 @@ const Emissiontips = () => {
                   </p>
                 </div>
               </div>
+            ))}
+          </div>
+          <div className="pagination">
+          <span>Page No : </span> 
+            {Array.from({
+              length: Math.ceil(dailytips.length / tipsPerPage),
+            }).map((_, index) => (
+              <button key={index} onClick={() => paginate(index + 1)}>
+                {index + 1}
+              </button>
             ))}
           </div>
         </div>
