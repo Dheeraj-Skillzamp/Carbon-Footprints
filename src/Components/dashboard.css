@@ -8,10 +8,11 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  height: fit-content;
 }
 
 .card {
-  height: 350px;
+  /* height: 350px; */
   background-color: #f4f4f494;
   border: 1px solid greenyellow;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -20,6 +21,8 @@
   width: calc(33.33% - 15px);
   box-sizing: border-box;
   position: relative;
+  min-width: 700px;
+  /* min-height:400px; */
 }
 
 .card:hover {
@@ -51,6 +54,10 @@
   font-size: 15px;
   margin-bottom: -12px;
 }
+.card-image{
+  height: 300px;
+  width: 500px
+}
 
 /* Modal overlay */
 .modal-overlay {
@@ -65,6 +72,22 @@
   justify-content: center;
 }
 
+.fav-button{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: -10px;
+}
+
+
+.tipp-photo{
+  height: 250px;
+  width: fit-content;
+}
+
+.tip-video{
+  /* width: 600px; */
+  margin-top: 12px;
+}
 /* Modal */
 .modal {
   background: white;
@@ -90,6 +113,7 @@
 }
 
 .modal p {
+  margin-top: 15px;
   font-size: 1em;
   line-height: 1.4;
 }
@@ -98,6 +122,34 @@
   display: inline-block;
   margin-left: 10px;
   vertical-align: middle;
+}
+
+.add-fav{
+  /* color: red; */
+  margin-right: 15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination span{
+  padding: 8px 16px;
+  margin: 0 5px;
+}
+.pagination button {
+  background-color: #3498db;
+  color: white;
+  border: 1px solid #3498db;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #2980b9;
 }
 
 /* Responsive styles */

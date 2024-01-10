@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import Navbar from '../Headers&Footers/Headers';
 import './monthlyemission.css';
 
@@ -36,15 +36,16 @@ const Monthlyemission = () => {
 
   return (
     <>
+    <ToastContainer />
       <Navbar />
       <div className="container">
         <div className="emission-table">
-          <h2 className="table-title">Current Month Emission Data</h2>
+          <h2 className="table-title">Current Month Carbon Emission Data</h2>
           <table className="data-table">
             <thead>
               <tr>
                 <th>Month</th>
-                <th>Total Emissions</th>
+                <th>Total Carbon Emissions (Kg)</th>
               </tr>
             </thead>
             <tbody>
@@ -57,12 +58,12 @@ const Monthlyemission = () => {
         </div>
   
         <div className="emission-table">
-          <h2 className="table-title">Past Months Emission Data</h2>
+          <h2 className="table-title">Past Months Carbon Emission Data</h2>
           <table className="data-table">
             <thead>
               <tr>
                 <th>Month</th>
-                <th>Total Emissions</th>
+                <th>Total Carbon Emissions (Kg)</th>
               </tr>
             </thead>
             <tbody>

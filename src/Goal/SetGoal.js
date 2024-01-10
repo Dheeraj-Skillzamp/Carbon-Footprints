@@ -94,10 +94,10 @@ const SetGoal = () => {
             <div>
                 <div>
                     <div className='setgoal-container'>
-                        <h2>Set Your Goal</h2>
+                        <h2>Set Your Monthly Goal</h2>
                         <form onSubmit={setYourGoal}>
                             <div>
-                                <label>Food</label>
+                                <label>Food (Kg)</label>
                                 <input
                                     type='number'
                                     placeholder='Food Goal'
@@ -106,7 +106,7 @@ const SetGoal = () => {
                                     onChange={handleChange} />
                             </div>
                             <div>
-                                <label>Electricity</label>
+                                <label>Electricity (Kg)</label>
                                 <input
                                     type='number'
                                     placeholder='Electricity Goal'
@@ -115,7 +115,7 @@ const SetGoal = () => {
                                     onChange={handleChange} />
                             </div>
                             <div>
-                                <label>Diesel</label>
+                                <label>Diesel (kg)</label>
                                 <input
                                     type='number'
                                     placeholder='Diesel Goal'
@@ -124,7 +124,7 @@ const SetGoal = () => {
                                     onChange={handleChange} />
                             </div>
                             <div>
-                                <label>Petrol</label>
+                                <label>Petrol (kg)</label>
                                 <input
                                     type='number'
                                     placeholder='Petrol Goal'

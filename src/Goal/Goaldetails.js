@@ -24,7 +24,7 @@ const Goaldetails = () => {
         total_goal: '',
     })
 
-    const goalData = ['ID', 'Petrol', 'Diseal', 'Electricity', 'Food', 'Total Goal'];
+    const goalData = ['ID', 'Petrol', 'Diesel', 'Electricity', 'Food', 'Total Goal'];
     const [showform1, setShowform1] = useState(false);
     const navigate = useNavigate();
 
@@ -146,14 +146,14 @@ const Goaldetails = () => {
             <Navbar />
             <div>
                 <div className='goal-container'>
-                    <h2>Current Goal</h2>
+                    <h2>Current Monthly Goal</h2>
                     <div>
                         {getgoal && (
                             <table>
                                 <thead>
                                     <tr>
                                         <th>Goal</th>
-                                        <th>Value</th>
+                                        <th>Value (Kg)</th>
 
                                     </tr>
                                 </thead>

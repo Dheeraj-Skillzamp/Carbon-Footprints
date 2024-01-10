@@ -132,7 +132,7 @@ const Editprofile = () => {
     return (
         <>
             <ToastContainer />
-            <Navbar></Navbar>
+            <Navbar />
             <div className='edit'>
                 <div className='profile-container'>
                     <h2>Update Profile</h2>

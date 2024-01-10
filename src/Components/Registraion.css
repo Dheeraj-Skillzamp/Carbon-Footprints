@@ -1,111 +1,130 @@
-
-.main-container 
-{
- background-color: whitesmoke;
- background-image: none;
-   opacity: 0.9;
-    max-width: 400px;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .background-image 
-  {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+.main-container {
+  background-color: whitesmoke;
+  background-image: none;
+  opacity: 0.9;
+  /* max-width: 400px;
+  margin: 10% auto;
+  padding: 20px; */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.iconn{
-  margin-left: 130px;
+
+.mainn-container {
+  background-color: whitesmoke;
+  background-image: none;
+  opacity: 0.9;
+  max-width: 400px;
+  /* max-height: 900px; */
+  margin: 10% auto;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.iconn {
+  display: flex;
+  justify-content: center;
 }
 
 
 .background-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    opacity: 0.6; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
 }
 
 .resend-otp-btn-disabled {
-    background-color: grey;
-    color: white;
-    cursor: not-allowed;
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
 }
 
 
-.resend-otp-btn-disabled:hover{
-    background-color: #555;
+.resend-otp-btn-disabled:hover {
+  background-color: #555;
 }
-  
-.admin-login{
-  margin-left: 70%;
-  margin-top: -9%;
+
+.already-registered-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
-.resend-btn{
+
+.resend-btn {
   margin-left: 10px;
 }
-  .form-container {
-    margin-bottom: 20px;
-    padding-right: 10px;
-  }
 
-  .form-container h2 {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    text-align: center;
-    color: green;
-  }
-  .form-container label{
-    color: black;
-  }
-  .in-otp{
-    width: 95%;
-  }
-  
-  
-  label {
-    display: block;
-    margin-bottom: 8px;
-    color: #555;
-  }
+.form-container {
+  margin-bottom: 20px;
+  margin-left: 20px;
+  /* height: 340px; */
+  width: 340px;
+}
 
-  input {
-    width: 98%;
-    padding: 10px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  } 
- 
-  button {
-    background-color: #4caf50;
-    opacity: none;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  /* .otp-container {
+.form-container h2 {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: green;
+}
+
+.form-container label {
+  color: black;
+}
+
+.in-otp {
+  width: 95%;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input {
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  opacity: none;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* .otp-container {
     display: ${props => (props.showOTP ? 'block' : 'none')};
     margin-top: 20px;
   } */
-  
-  /* Add media queries for responsiveness */
-  @media (max-width: 600px) {
-    .main-container {
-      max-width: 100%;
-    }
+
+/* Add media queries for responsiveness */
+@media (max-width: 600px) {
+  .main-container {
+    max-width: 100%;
   }
-  
+}
