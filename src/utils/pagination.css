@@ -8,7 +8,7 @@
     margin: 0 5px;
    
   }
-  .page-item.active .page-link {
+  .page-item::after .page-link {
     background-color: blue !important;
     color: white;
     border: 1px solid blue;

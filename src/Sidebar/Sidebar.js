@@ -25,7 +25,7 @@ const routes = [
     subRoutes: [
       {
         path: "/profile/calculate-fuel",
-        name: "Add Fuel Detauls",
+        name: "Add Fuel Details",
       },
       {
         path: "/profile/fuel-details",
