@@ -119,10 +119,12 @@ const Login = () => {
         setAccessToken(newAccessToken);
         localStorage.setItem("accessToken", newAccessToken);
         const userToken = localStorage.setItem("userRole", "user");
+        
         navigate("/dashboard");
       } else {
         console.log("OTP verification failed");
         toast.error("OTP Verification Failed. Try Again");
+        navigate("/login")
       }
     } catch (error) {
       console.log("OTP Verification Failed. Try Again", error);

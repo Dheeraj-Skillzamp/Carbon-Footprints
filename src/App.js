@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Registration from "./Components/Registration";
 import Userprofile from "./Components/userprofile";
@@ -26,9 +26,14 @@ const clientId =
   "541547830041-ll8mudkm38ra86s4eibvtjsjmtgds3ql.apps.googleusercontent.com";
 
 function App() {
+  
   const [loggedin, setLoggedin] = useState(false);
   const role = localStorage.getItem("userRole");
   const token = localStorage.getItem("accessToken");
+
+  const browserDetails = navigator.userAgent;
+  localStorage.setItem('browser',browserDetails)
+  const browserInfo = localStorage.getItem('browser')
 
   useEffect(() => {
     if (token && role) {
@@ -36,8 +41,12 @@ function App() {
     } else if (!token) {
       setLoggedin(false);
       // window.location.href = '/login';
+
+     
     }
   }, [token, role]);
+  
+ 
 
   useEffect(() => {
     function start() {
@@ -220,6 +229,18 @@ function App() {
               }
             />
           )}
+
+{loggedin && (role === "admin" || role === "user") && (
+            <Route
+              path="/*"
+              element={
+              <div>
+                      <h1>Page not found</h1> 
+              </div>
+              }
+            />
+          )}
+
         </Routes>
       </div>
     </BrowserRouter>
